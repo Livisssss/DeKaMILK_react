@@ -27,7 +27,7 @@ Para entender melhor o contexto e a evolução do projeto, recomendamos a leitur
 
 ## Licença
 
-Este projeto é distribuído sob a licença [MIT](link_para_a_licenca). Ao contribuir, você concorda em conceder a mesma licença para suas contribuições.
+Este projeto é distribuído sob a licença [MIT].
 
 ---
 
