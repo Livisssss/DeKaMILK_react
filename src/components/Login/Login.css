@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,700;1,700&display=swap");
+
+body {
+  background-color: #b7c4d7;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+}
+
+.area-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 446px;
+  height: 512px;
+  padding: 35px;
+  border-radius: 14px;
+  background-color: #f8f8ec;
+}
+
+.header h1 {
+  /*Escrita DEKA*/
+  color: #b5b5b5;
+  font-family: "Rubik", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+}
+
+.header h1 span {
+  /*Escrita MILK*/
+  color: #567ebb;
+}
+
+.header img {
+  /*Imagem*/
+  width: 125px;
+  height: auto;
+}
+
+.inputs input {
+  width: 325px;
+  height: 55px;
+  border-radius: 14px;
+  background: #d2d5d8;
+  border: none;
+  margin-bottom: 25px;
+  padding-left: 12px;
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+input::placeholder {
+  color: #383939;
+}
+
+.btEntrar {
+  background-color: #2b4c7e;
+  border: none;
+  width: 325px;
+  height: 55px;
+  border-radius: 14px;
+  color: #f8f8ec;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.btEntrar:hover {
+  background: #457cce;
+}
