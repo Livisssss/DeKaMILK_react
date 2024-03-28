@@ -10,7 +10,7 @@ O DeKaMILK foi concebido para automatizar tarefas administrativas e financeiras,
 
 Para entender melhor o contexto e a evolução do projeto, recomendamos a leitura do artigo do Projeto Integrador III, escrito por Bruno Simionato, Lívia Verlindo e Ricardo Dequi, orientado pelo Professor Daniel Menin Tortelli. O artigo detalha a motivação, o processo de desenvolvimento e as tecnologias utilizadas no ciclo anterior do projeto.
 
-[Artigo - Sistema de Gerenciamento Leiteiro DeKaMILK](link_para_o_artigo)
+[Artigo - Sistema de Gerenciamento Leiteiro DeKaMILK](https://drive.google.com/file/d/1c3fL7JsZLn1850VzS4bum8ZuDX2fFuzV/view?usp=sharing)
 
 ## Tecnologias Utilizadas
 
@@ -18,15 +18,6 @@ Para entender melhor o contexto e a evolução do projeto, recomendamos a leitur
 - **Backend**: Spring Boot (API)
 - **Banco de Dados**: PostgreSQL
 - **Design**: Figma
-
-## Como Contribuir
-
-Se você deseja contribuir para o projeto DeKaMILK, siga estas etapas:
-
-1. Faça um fork do repositório.
-2. Clone o fork para o seu ambiente de desenvolvimento.
-3. Implemente as alterações desejadas.
-4. Faça um pull request para enviar suas alterações para revisão.
 
 ## Equipe
 
@@ -40,4 +31,4 @@ Este projeto é distribuído sob a licença [MIT](link_para_a_licenca). Ao contr
 
 ---
 
-Este documento de README fornece uma visão geral do projeto DeKaMILK e orienta sobre como contribuir. Fique à vontade para entrar em contato conosco se tiver alguma dúvida ou sugestão. Agradecemos seu interesse em nosso projeto!
+Este documento de README fornece uma visão geral do projeto DeKaMILK. Fique à vontade para entrar em contato conosco se tiver alguma dúvida ou sugestão. Agradecemos seu interesse em nosso projeto!
