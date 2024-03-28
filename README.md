@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# DeKaMILK - Sistema de Gerenciamento Leiteiro
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bem-vindo ao repositório do projeto DeKaMILK, uma aplicação de gerenciamento para micro indústrias produtoras de leite. Este é o terceiro ciclo de desenvolvimento do projeto, agora em sua versão 3.0, realizado como parte do Projeto Integrador do quinto semestre da faculdade.
 
-## Available Scripts
+## Visão Geral
 
-In the project directory, you can run:
+O DeKaMILK foi concebido para automatizar tarefas administrativas e financeiras, proporcionando aos produtores de leite um controle eficiente sobre suas operações. Inicialmente desenvolvido em C# e posteriormente em uma versão web utilizando HTML, CSS, JavaScript e Spring Boot com PostgreSQL, o projeto agora passa por uma refatoração completa e uma nova implementação em React, com um layout redesenhado no Figma.
 
-### `npm start`
+## Artigo do Projeto Integrador III
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Para entender melhor o contexto e a evolução do projeto, recomendamos a leitura do artigo do Projeto Integrador III, escrito por Bruno Simionato, Lívia Verlindo e Ricardo Dequi, orientado pelo Professor Daniel Menin Tortelli. O artigo detalha a motivação, o processo de desenvolvimento e as tecnologias utilizadas no ciclo anterior do projeto.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+[Artigo - Sistema de Gerenciamento Leiteiro DeKaMILK](link_para_o_artigo)
 
-### `npm test`
+## Tecnologias Utilizadas
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Frontend**: React
+- **Backend**: Spring Boot (API)
+- **Banco de Dados**: PostgreSQL
+- **Design**: Figma
 
-### `npm run build`
+## Como Contribuir
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Se você deseja contribuir para o projeto DeKaMILK, siga estas etapas:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Faça um fork do repositório.
+2. Clone o fork para o seu ambiente de desenvolvimento.
+3. Implemente as alterações desejadas.
+4. Faça um pull request para enviar suas alterações para revisão.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Equipe
 
-### `npm run eject`
+- Bruno Simionato
+- Lívia Verlindo
+- Ricardo Dequi
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Licença
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Este projeto é distribuído sob a licença [MIT](link_para_a_licenca). Ao contribuir, você concorda em conceder a mesma licença para suas contribuições.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Este documento de README fornece uma visão geral do projeto DeKaMILK e orienta sobre como contribuir. Fique à vontade para entrar em contato conosco se tiver alguma dúvida ou sugestão. Agradecemos seu interesse em nosso projeto!
