@@ -1,6 +1,6 @@
 # DeKaMILK - Sistema de Gerenciamento Leiteiro
 
-Bem-vindo ao repositório do projeto DeKaMILK, uma aplicação de gerenciamento para micro indústrias produtoras de leite. Este é o terceiro ciclo de desenvolvimento do projeto, agora em sua versão 3.0, realizado como parte do Projeto Integrador do quinto semestre da faculdade.
+Bem-vindo ao repositório do projeto DeKaMILK, uma aplicação de gerenciamento para micro indústrias produtoras de leite. Este é o terceiro ciclo de desenvolvimento do projeto, agora em sua versão 3.0, realizado como parte do Projeto Integrador do quinto semestre da faculdade - Projeto Integrador V.
 
 ## Visão Geral
 
@@ -27,7 +27,7 @@ Para entender melhor o contexto e a evolução do projeto, recomendamos a leitur
 
 ## Licença
 
-Este projeto é distribuído sob a licença [MIT].
+Este projeto é distribuído sob a licença MIT.
 
 ---
 
