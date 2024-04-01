@@ -21,9 +21,9 @@ Para entender melhor o contexto e a evolução do projeto, recomendamos a leitur
 
 ## Equipe
 
-- Bruno Simionato
-- Lívia Verlindo
-- Ricardo Dequi
+- [Bruno Simionato](https://github.com/brunosimionato)
+- [Lívia Verlindo](https://github.com/Livisssss)
+- [Ricardo Dequi](https://github.com/ricardoldequi)
 
 ## Licença
 
