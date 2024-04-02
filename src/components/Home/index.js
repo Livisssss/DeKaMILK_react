@@ -1,10 +1,12 @@
+import BarraLateral from "../BarraLateral";
 import "./Home.css";
 
 const Home = () => {
   return (
     <div>
-      <h1>TESTE CARALHO</h1>
-    </div>
+      <BarraLateral/>
+      <h1>Teste cacete Home</h1>
+    </div>  
   );
 };
 

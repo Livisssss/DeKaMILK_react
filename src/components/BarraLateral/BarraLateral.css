@@ -1,0 +1,30 @@
+.sidebar {
+  width: 200px;
+  background-color: #2b4c7e;
+  padding: 20px;
+}
+
+.menu-item {
+  background-color: #2b4c7e;
+  color: #f8f8ec;
+  font-family: Poppins;
+  font-size: 26px;
+  font-style: normal;
+}
+
+.menu-item a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 24px;
+  justify-content: space-between;
+  border-radius: 15px;
+}
+
+.menu-item a:hover {
+  color: #555;
+}
+
+.menu-icon {
+  padding-right: 10px;
+  margin-bottom: -4px;
+}
