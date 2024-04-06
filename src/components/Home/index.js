@@ -1,12 +1,12 @@
-import BarraLateral from "../BarraLateral";
+import Header from "../Header";
 import "./Home.css";
 
 const Home = () => {
   return (
     <div>
-      <BarraLateral/>
+      <Header />
       <h1>Teste cacete Home</h1>
-    </div>  
+    </div>
   );
 };
 

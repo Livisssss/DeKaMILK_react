@@ -1,11 +1,11 @@
-import BarraLateral from "../BarraLateral";
+import Header from "../Header";
 import "./Cadastros.css";
 
 const Cadastros = () => {
   return (
     <div>
-      <BarraLateral />
-        <h1>Teste cacete Cadastros</h1>
+      <Header />
+      <h1>Teste cacete Cadastros</h1>
     </div>
   );
 };

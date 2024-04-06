@@ -19,7 +19,7 @@ const Login = () => {
 
   return (
     <section className="area-login">
-      <div className="header">
+      <div className="logo">
         <img src="./imgs/vaca.png" alt="Logo Vaca" />
         <h1>
           DEKA<span>MILK</span>
