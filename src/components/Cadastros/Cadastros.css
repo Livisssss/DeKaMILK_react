@@ -1,0 +1,84 @@
+/* Estilos para os botões dentro da classe "botoes" */
+.botoes button {
+    margin-right: 25px; /* Adiciona uma margem à direita de cada botão */
+    padding: 10px 20px; /* Adiciona preenchimento interno aos botões */
+    background-color: #D2D5D8;
+    width: 204px;
+    height: 59px;
+    border: none;
+    border-radius: 14px;
+    color: #383939;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: bold;
+}
+
+.botoes {
+    display: flex; /* Torna os botões flexíveis para alinhamento */
+    justify-content:center; /* Alinha os botões à direita do contêiner */
+    margin-top: 35px;
+}
+
+  .botoes button:hover {
+    background-color: #E8E8E8;
+}
+
+  
+
+  /* Estilos para a tabela */
+  table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+  }
+  
+  /* Estilos para o cabeçalho da tabela */
+  thead th {
+    background-color: #f2f2f2;
+    padding: 8px;
+    text-align: left;
+    text-align: center;
+  }
+  
+  /* Estilos para as células do corpo da tabela */
+  tbody td {
+    padding: 8px;
+    text-align: center;
+    
+  }
+
+  /* Estilos para linhas pares */
+tbody tr:nth-child(even) {
+    background-color: #E8E8E8; /* Cor de fundo para linhas pares */
+  }
+  
+  /* Estilos para linhas ímpares */
+  tbody tr:nth-child(odd) {
+    background-color: #D2D5D8; /* Cor de fundo para linhas ímpares */
+  }
+  
+  /* Estilos para linhas alternadas */
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Estilos para os botões de edição */
+  .edit-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  
