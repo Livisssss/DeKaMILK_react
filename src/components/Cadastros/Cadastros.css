@@ -1,0 +1,117 @@
+/* BOTÕES */
+.botoes button {
+  margin-right: 25px;
+  margin-top: 35px;
+  padding: 10px;
+  background-color: #e0e3e6; 
+  width: 200px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  color: #383939;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.botoes {
+  display: flex;
+  justify-content:center;
+  margin-top: 35px;
+}
+
+.botoes button:hover {
+  background-color: #f2f2f2;
+}
+
+/* Altera a cor dos botões conforme a tela que está sendo exibida*/
+.botoes button.selecionado {
+  background-color: #f2f2f2;
+}
+
+/* TABELA */
+table {
+  width: 80%;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+}
+  
+/* Cabeçalho */
+  thead th {
+  background-color: #f2f2f2;
+  padding: 8px;
+  text-align: left;
+  text-align: center;
+}
+  
+/* Corpo */
+  tbody td {
+  padding: 8px;
+  text-align: center;
+  }
+
+/* Cor linhas pares */
+  tbody tr:nth-child(even) {
+  background-color: #E8E8E8;
+}
+  
+/* Cor linhas ímpares */
+  tbody tr:nth-child(odd) {
+  background-color: #D2D5D8;
+}
+  
+/* Estilos para linhas alternadas */
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+  
+
+
+/* Estilos para os botões de edição 
+.edit-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 4px;
+  cursor: pointer;
+}
+  
+
+
+  
+/* BOTÃO ADICIONAR CLIENTES */
+.adicionarBT {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+}
+  
+.adicionarBT button {
+  font-size: 50px;
+  width: 55px;
+  height: 55px;
+  border: none;
+  background-color: #2b4c7e;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+  
+.adicionarBT button:hover {
+  background-color: #457cce;
+}
+  
+  
