@@ -1,0 +1,8 @@
+.content {
+  /*imagem de fundo*/
+  background: url(../../../public/imgs/vaca_fundo.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  transition: 0.5s;
+}

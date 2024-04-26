@@ -1,7 +1,13 @@
 .sidebar {
+  position: fixed;
+  top: 0;
   width: 200px;
+  height: 100%;
   background-color: #2b4c7e;
   padding: 20px;
+  transition: left 0.5s;
+  border: none;
+  position: relative;
 }
 
 .menu-item {
@@ -9,22 +15,35 @@
   color: #f8f8ec;
   font-family: Poppins;
   font-size: 26px;
-  font-style: normal;
+}
+
+.menu-item:hover {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Adiciona um branco transparente ao passar o mouse */
 }
 
 .menu-item a {
+  align-items: center;
   text-decoration: none;
+  padding: 10px 0;
   color: #fff;
   font-size: 24px;
   justify-content: space-between;
-  border-radius: 15px;
 }
 
 .menu-item a:hover {
-  color: #555;
+  background: rgba(210, 213, 216, 0.27);
 }
 
 .menu-icon {
   padding-right: 10px;
   margin-bottom: -4px;
+}
+
+.menu-item a:hover .menu-icon {
+  filter: brightness(0.4); /* Reduz o brilho do ícone quando passar o mouse */
 }
