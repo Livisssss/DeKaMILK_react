@@ -13,13 +13,14 @@
 }
 
 .header .icon {
-  width: 60px;
-  height: 30px;
+  width: 45px;
+  height: auto;
   padding: 20px;
   border: none;
   border-color: #2b4c7e;
   background-color: #2b4c7e;
 }
+
 
 .header h1 {
   /*Escrita DEKA*/
@@ -37,21 +38,22 @@
 }
 
 .btSair {
-  width: 108px;
-  height: 61px;
-  border-radius: 14px;
-  background-color: #d2d5d8;
+  width: 80px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #e0e3e6;
   border: none;
   margin-right: 20px;
   color: #383939;
   font-family: Poppins;
-  font-size: 20px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .btSair:hover {
-  background-color: #383939;
-  color: #d2d5d8;
+  background-color: #f2f2f2;
 }
