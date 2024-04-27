@@ -20,7 +20,6 @@
   background-color: #2b4c7e;
 }
 
-
 .header h1 {
   /*Escrita DEKA*/
   color: #f8f8ec;
@@ -55,12 +54,4 @@
 
 .btSair:hover {
   background-color: #f2f2f2;
-}
-
-.conteudo {
-  transition: margin-left 0.5s;
-}
-
-.conteudo.deslocado {
-  margin-left: 200px; /* A largura da Barra Lateral */
 }
