@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from "../Header";
-import "./Cadastros.css";
+import "./ClienteInicial.css";
 
-const Cadastros = () => {
+const ClienteInicial = () => {
   // Defina o estado telaCadastrosAberta e a função setTelaCadastrosAberta usando o hook useState
   const [telaCadastrosAberta, setTelaCadastrosAberta] = useState("CLIENTES");
 
@@ -74,4 +74,4 @@ const Cadastros = () => {
   );
 };
 
-export default Cadastros;
+export default ClienteInicial;
