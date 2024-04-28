@@ -18,7 +18,7 @@ const BarraLateral = ({ aberta }) => {
             alt="Cadastros"
             className="menu-icon"
           />
-          <Link to="/ClienteInicial">Cadastros</Link>
+          <Link to="/cadastros">Cadastros</Link>
         </MenuItem>
 
         <MenuItem className="menu-item">

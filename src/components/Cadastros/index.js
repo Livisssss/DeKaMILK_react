@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from "../Header";
-import "./ClienteInicial.css";
+import "./Cadastros.css";
 
 const ClienteInicial = () => {
   // Defina o estado telaCadastrosAberta e a função setTelaCadastrosAberta usando o hook useState
