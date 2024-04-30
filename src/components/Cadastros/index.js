@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from "../Header";
 import "./Cadastros.css";
 
-const ClienteInicial = () => {
+const Cadastros = () => {
   // Defina o estado telaCadastrosAberta e a função setTelaCadastrosAberta usando o hook useState
   const [telaCadastrosAberta, setTelaCadastrosAberta] = useState("CLIENTES");
 
@@ -17,12 +17,15 @@ const ClienteInicial = () => {
     <div>
       <Header />
       <div className="botoes">
-        {/* Use a variável telaCadastrosAberta para determinar a cor do botão CLIENTES */}
-        <button className={telaCadastrosAberta === "CLIENTES" ? "selecionado" : ""} onClick={() => handleButtonClick("CLIENTES")}>CLIENTES</button>
-        {/* Use a variável telaCadastrosAberta para determinar a cor do botão FORNECEDORES */}
-        <button className={telaCadastrosAberta === "FORNECEDORES" ? "selecionado" : ""} onClick={() => handleButtonClick("FORNECEDORES")}>FORNECEDORES</button>
-        {/* Use a variável telaCadastrosAberta para determinar a cor do botão OPERAÇÕES */}
-        <button className={telaCadastrosAberta === "OPERAÇÕES" ? "selecionado" : ""} onClick={() => handleButtonClick("OPERAÇÕES")}>OPERAÇÕES</button>
+        <Link to="/CadastroCliente">
+          <button className={telaCadastrosAberta === "CLIENTES" ? "selecionado" : ""} onClick={() => handleButtonClick("CLIENTES")}>CLIENTES</button>
+        </Link>
+        <Link to="/CadastroFornecedor">
+          <button className={telaCadastrosAberta === "FORNECEDORES" ? "selecionado" : ""} onClick={() => handleButtonClick("FORNECEDORES")}>FORNECEDORES</button>
+        </Link>
+        <Link to="/CadastroOperacoes">
+          <button className={telaCadastrosAberta === "OPERAÇÕES" ? "selecionado" : ""} onClick={() => handleButtonClick("OPERAÇÕES")}>OPERAÇÕES</button>
+        </Link>
       </div>
 
       <table>
@@ -74,4 +77,4 @@ const ClienteInicial = () => {
   );
 };
 
-export default ClienteInicial;
+export default Cadastros;
