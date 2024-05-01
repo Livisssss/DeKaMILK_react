@@ -1,0 +1,36 @@
+/* BOTÕES */
+.botoes button {
+  margin-right: 25px;
+  margin-top: 35px;
+  padding: 10px;
+  background-color: #e0e3e6;
+  width: 200px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  color: #383939;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.botoes {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+}
+
+.botoes button:hover {
+  background-color: #f2f2f2;
+}
+
+/* Altera a cor dos botões conforme a tela que está sendo exibida*/
+.botoes button.selecionado {
+  background-color: #f2f2f2;
+}

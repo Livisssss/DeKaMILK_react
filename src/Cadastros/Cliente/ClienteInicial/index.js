@@ -1,32 +1,23 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Header from "../Header";
-import "./Cadastros.css";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Header from "../../../components/Header";
+import "./ClienteInicial.css";
+import MenuCadastros from "../../components/MenuCadastros";
 
-const Cadastros = () => {
-  // Defina o estado telaCadastrosAberta e a função setTelaCadastrosAberta usando o hook useState
+const ClienteInicial = () => {
   const [telaCadastrosAberta, setTelaCadastrosAberta] = useState("CLIENTES");
 
-  // Função para lidar com o clique nos botões
   const handleButtonClick = (tela) => {
-    // Atualiza o estado telaCadastrosAberta para o valor correspondente ao botão clicado
     setTelaCadastrosAberta(tela);
   };
 
   return (
     <div>
       <Header />
-      <div className="botoes">
-        <Link to="/CadastroCliente">
-          <button className={telaCadastrosAberta === "CLIENTES" ? "selecionado" : ""} onClick={() => handleButtonClick("CLIENTES")}>CLIENTES</button>
-        </Link>
-        <Link to="/CadastroFornecedor">
-          <button className={telaCadastrosAberta === "FORNECEDORES" ? "selecionado" : ""} onClick={() => handleButtonClick("FORNECEDORES")}>FORNECEDORES</button>
-        </Link>
-        <Link to="/CadastroOperacoes">
-          <button className={telaCadastrosAberta === "OPERAÇÕES" ? "selecionado" : ""} onClick={() => handleButtonClick("OPERAÇÕES")}>OPERAÇÕES</button>
-        </Link>
-      </div>
+      <MenuCadastros
+        telaSelecionada={telaCadastrosAberta}
+        handleButtonClick={handleButtonClick}
+      />
 
       <table>
         <thead>
@@ -66,15 +57,13 @@ const Cadastros = () => {
           </tr>
         </tbody>
       </table>
-
-      {/* Botão Adicionar Clientes */}
-      <div className="adicionarBT">
+      <div className="btAdicionar">
         <Link to="/cadastroCliente">
           <button>+</button>
         </Link>
       </div>
-      </div>  
+    </div>
   );
 };
 
-export default Cadastros;
+export default ClienteInicial;

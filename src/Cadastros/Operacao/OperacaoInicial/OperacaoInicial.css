@@ -1,0 +1,76 @@
+/* TABELA */
+table {
+  width: 80%;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+}
+
+/* Cabeçalho */
+thead th {
+  background-color: #f2f2f2;
+  padding: 8px;
+  text-align: left;
+  text-align: center;
+}
+
+/* Corpo */
+tbody td {
+  padding: 8px;
+  text-align: center;
+}
+
+/* Cor linhas pares */
+tbody tr:nth-child(even) {
+  background-color: #e8e8e8;
+}
+
+/* Cor linhas ímpares */
+tbody tr:nth-child(odd) {
+  background-color: #d2d5d8;
+}
+
+/* Estilos para linhas alternadas */
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Estilos para os botões de edição 
+  .edit-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+    
+  
+  
+    
+  /* BOTÃO ADICIONAR CLIENTES */
+.btAdicionar {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+}
+
+.btAdicionar button {
+  font-size: 50px;
+  width: 55px;
+  height: 55px;
+  border: none;
+  background-color: #2b4c7e;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btAdicionar button:hover {
+  background-color: #457cce;
+}
