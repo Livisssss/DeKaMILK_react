@@ -10,7 +10,6 @@
   position: fixed;
   width: 200px;
   height: 100%;
-  background-color: #2b4c7e;
   transition: width 0.7s ease;
   display: flex;
   z-index: 1000;
@@ -44,4 +43,16 @@
 
 .pro-sidebar-layout {
   background-color: #2b4c7e;
+}
+
+.pro-sidebar-inner {
+  width: 250px;
+}
+
+.pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 8px 3px 8px 2px;
+  cursor: pointer;
 }

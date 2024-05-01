@@ -2,12 +2,15 @@ import React from "react";
 import "react-pro-sidebar/dist/css/styles.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
-import Login from "./components/Login";
-import Home from "./components/Home";
-import Cadastros from "./components/Cadastros";
-import Financeiro from "./components/Financeiro";
-import CadastroCliente from "./components/CadastroCliente";
-import CadastroFornecedor from "./components/CadastroFornecedor"; // Corrigido o nome do componente aqui
+import Login from "./Login";
+import Home from "./Home";
+import ClienteInicial from "./Cadastros/Cliente/ClienteInicial";
+import CadastroCliente from "./Cadastros/Cliente/CadastroCliente";
+import FornecedorInicial from "./Cadastros/Fornecedor/FornecedorInicial";
+import CadastroFornecedor from "./Cadastros/Fornecedor/CadastroFornecedor";
+import OperacaoInicial from "./Cadastros/Operacao/OperacaoInicial";
+import CadastroOperacao from "./Cadastros/Operacao/CadastroOperacao";
+import Financeiro from "./Financeiro";
 
 const App = () => {
   return (
@@ -16,9 +19,12 @@ const App = () => {
         <Route element={<Header />} />
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/cadastros" element={<Cadastros />} />
+        <Route path="/clienteInicial" element={<ClienteInicial />} />
         <Route path="/cadastroCliente" element={<CadastroCliente />} />
+        <Route path="/fornecedorInicial" element={<FornecedorInicial />} />
         <Route path="/cadastroFornecedor" element={<CadastroFornecedor />} />
+        <Route path="/operacaoInicial" element={<OperacaoInicial />} />
+        <Route path="/cadastroOperacao" element={<CadastroOperacao />} />
         <Route path="/financeiro" element={<Financeiro />} />
       </Routes>
     </Router>

@@ -1,11 +1,10 @@
-import Header from "../Header";
+import Header from "../components/Header";
 import "./Home.css";
 
 const Home = () => {
   return (
     <div className="content">
       <Header />
-      <h1>Teste cacete Home</h1>
     </div>
   );
 };
