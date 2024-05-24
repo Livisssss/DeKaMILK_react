@@ -7,7 +7,6 @@ table {
   margin-top: 60px;
 }
 
-/* Cabeçalho */
 thead th {
   background-color: #f2f2f2;
   padding: 8px;
@@ -15,26 +14,41 @@ thead th {
   text-align: center;
 }
 
-/* Corpo */
 tbody td {
   padding: 8px;
   text-align: center;
 }
 
-/* Cor linhas pares */
 tbody tr:nth-child(even) {
   background-color: #e8e8e8;
 }
 
-/* Cor linhas ímpares */
 tbody tr:nth-child(odd) {
   background-color: #d2d5d8;
 }
 
-/* Estilos para linhas alternadas */
 tbody tr:nth-child(even) {
   background-color: #f9f9f9;
 }
+
+thead th:first-child {
+  border-top-left-radius: 10px;
+}
+
+thead th:last-child {
+  border-top-right-radius: 10px;
+}
+
+tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+
+
 
 /* Estilos para os botões de edição 
 .edit-button {
@@ -51,12 +65,13 @@ tbody tr:nth-child(even) {
   
 
 
-  
+
 /* BOTÃO ADICIONAR CLIENTES */
 .btAdicionar {
   position: fixed;
   bottom: 50px;
   right: 50px;
+  display: block;
 }
 
 .btAdicionar button {

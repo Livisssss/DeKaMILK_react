@@ -23,7 +23,8 @@ const FornecedorInicial = () => {
         <thead>
           <tr>
             <th>NOME</th>
-            <th>CPF</th>
+            <th>CPF/CNPJ</th>
+            <th>INS. ESTADUAL</th>
             <th>ENDEREÇO</th>
             <th>CIDADE</th>
             <th>UF</th>
@@ -38,6 +39,7 @@ const FornecedorInicial = () => {
           <tr>
             <td>Nome 2</td>
             <td>987.654.321-00</td>
+            <td>152152309</td>
             <td>Endereço 2</td>
             <td>Cidade 2</td>
             <td>UF 2</td>
@@ -48,6 +50,7 @@ const FornecedorInicial = () => {
           <tr>
             <td>Nome 3</td>
             <td>456.789.123-00</td>
+            <td>152152309</td>
             <td>Endereço 3</td>
             <td>Cidade 3</td>
             <td>UF 3</td>
