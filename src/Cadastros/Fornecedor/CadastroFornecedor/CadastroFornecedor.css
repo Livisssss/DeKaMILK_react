@@ -1,4 +1,4 @@
-/* Define o estilo para o formulário */
+/* ESTILO FORMULÁRIO */
 .formulario {
     width: 45%;
     margin: 0 auto;
@@ -6,7 +6,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* Define o estilo para os inputs dentro do formulário */
+/* ESTILO INPUT FORMULÁRIO */
 .formulario input {
     width: 100%;
     height: 40px;
@@ -22,63 +22,55 @@
     outline: none;
 }
 
-
-/* Define o estilo para as labels dentro do formulário */
+/* ESTILO LABEL FORMULÁRIO */
 .formulario label {
     text-align: left;
 }
 
 
 
-
-
-
+/* RADIO BUTTONS */
 .radio-buttons {
     display: grid;
-    grid-template-columns: min-content min-content; /* Duas colunas de tamanho mínimo */
-    grid-column-gap: 90px; /* Reduz a lacuna entre as colunas */
+    grid-template-columns: min-content min-content;
+    grid-column-gap: 50px;
     align-items: center;
-    justify-items: start; /* Alinha os itens horizontalmente ao início */
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .radio-buttons label {
-    display: flex;
-    align-items: center;
-    white-space: nowrap; /* Impede a quebra de texto em várias linhas */
-    align-self: start; /* Alinha as labels verticalmente ao início */
-  }
-  
-  .radio-buttons input[type="radio"] {
-    margin-right: 20px; /* Adiciona um espaço menor entre o radio button e a label */
-    width: 33px; /* Define uma largura menor para os radio buttons */
-    height: 33px; /* Define uma altura menor para os radio buttons */
-  }
-  
-  
-  
-  
-  
-  
-  
-  
-  
+    justify-items: start;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
-
-
-
-/* Define o estilo para o container de CPF e RG */
-.cnpj-incricao-container {
-    text-align: left; /* Alinha o texto à esquerda dentro do container */
+.radio-button-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 25px; /* Espaçamento horizontal entre as colunas */
+    grid-template-columns: min-content auto;
+    align-items: center;
+    margin-top: -10px;
+}
+
+.radio-buttons label {
+    white-space: nowrap;
+}
+
+.radio-buttons input[type="radio"] {
+    margin-top: 15px; 
+    margin-right: 20px;
+    width: 23px;
+    height: 23px;
 }
 
 
 
-/* Define o estilo para o container de localidade */
+/* ESTILO CONTAINER CPNJ E INSCRIÇÃO ESTADUAL */
+.cnpj-incricao-container {
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 25px;
+}
+
+
+
+/* ESTILO CONTAINER LOCALIDADE */
 .localidade-container {
     text-align: left;
     display: grid;
@@ -86,7 +78,6 @@
     grid-column-gap: 25px;  
 }
 
-/* Define o estilo para cada div dentro do container de localidade */
 .localidade-container > div {
     display: flex;
     flex-direction: column;
@@ -94,35 +85,35 @@
 
 
 
-/* Define o estilo para o container de contato */
+/* ESTILO CONTAINER CONTATO */
 .contato-container {
     text-align: left;
     display: grid;
     grid-template-columns: 330px 1fr;
-    grid-column-gap: 25px; /* Espaçamento horizontal entre as colunas */
+    grid-column-gap: 25px;
 }
 
 
 
-/* Botões do CRUD*/
+/* BOTÕES CRUD*/
 .botoes-crud {
     width: 45%;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between; /* Distribui os itens igualmente ao longo do eixo principal */
-    align-items: center; /* Alinha os itens verticalmente ao centro */
+    justify-content: space-between;
+    align-items: center;
 }
 
 .botoes-esquerda {
     display: flex;
-    justify-content: flex-start; /* Alinha os itens à esquerda */
-    gap: 20px; /* Espaçamento entre os botões */
+    justify-content: flex-start;
+    gap: 20px;
 }
 
 .botoes-direita {
     display: flex;
-    justify-content: flex-end; /* Alinha os itens à direita */
-    gap: 20px; /* Espaçamento entre os botões */
+    justify-content: flex-end;
+    gap: 20px;
 }
 
 .botoes-crud button {
@@ -184,13 +175,3 @@ button[name="btLimpar"]:hover {
 button[name="btConsultar"]:hover {
     background-color: #1F3A66;
 }
-
-
-
-
-
-
-
-
-
-

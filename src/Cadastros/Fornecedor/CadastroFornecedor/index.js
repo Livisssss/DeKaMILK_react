@@ -22,19 +22,24 @@ const CadastroFornecedor = () => {
     setTelaCadastrosAberta(tela);
   };
 
-  // APLICA A MASCARA CPF E ATUALIZA O INPUT
-  const handleChangeCnpj = (event) => {
-    let value = event.target.value;
-    value = value.replace(/\D/g, "");
-    value = cpfMascara(value);
+  const handleChangeCpfCnpj = (event) => {
+    const { value } = event.target;
+    let maskedValue;
 
-    setCnpj(value);
+    if (tipoCliente === "pessoaFisica") {
+      maskedValue = cpfMascara(value);
+    } else {
+      maskedValue = cnpjMascara(value);
+    }
+
+    setCnpj(maskedValue);
   };
 
-  // APLICA A MASCARA RG E ATUALIZA O INPUT
+
+  // APLICA A MASCARA INSCRIÇÃO E ATUALIZA O INPUT
   const handleChangeInscricao = (event) => {
     let value = event.target.value;
-    value = rgMascara(value);
+    value = inscricaoMascara(value);
 
     setInscricao(value);
   };
@@ -42,7 +47,6 @@ const CadastroFornecedor = () => {
   // APLICA A MASCARA UF E ATUALIZA O INPUT
   const handleChangeUf = (event) => {
     let value = event.target.value;
-    // Aplica a máscara
     value = ufMascara(value);
 
     setUf(value);
@@ -81,163 +85,73 @@ const CadastroFornecedor = () => {
   return (
     <div>
       <Header />
-      <MenuCadastros
-        telaSelecionada={telaCadastrosAberta}
-        handleButtonClick={handleButtonClick}
-      />
+      <MenuCadastros telaSelecionada={telaCadastrosAberta} handleButtonClick={handleButtonClick}/>
 
       <div className="formulario">
         <label htmlFor="nome">NOME</label>
-        <input
-          type="text"
-          id="nome"
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
-          maxlength="60"
-        />
+        <input type="text" id="nome" value={nome} onChange={(e) => setNome(e.target.value)} maxlength="60"/>
 
-        <div className="radio-buttons">
-          <label>
-            <input
-              type="radio"
-              value="pessoaFisica"
-              checked={tipoCliente === "pessoaFisica"}
-              onChange={() => setTipoCliente("pessoaFisica")}
-            />
-            Pessoa Física
-          </label>
-          <label>
-            <input
-              type="radio"
-              value="pessoaJuridica"
-              checked={tipoCliente === "pessoaJuridica"}
-              onChange={() => setTipoCliente("pessoaJuridica")}
-            />
-            Pessoa Jurídica
-          </label>
+        <div class="radio-buttons">
+          <div class="radio-button-container">
+            <input type="radio" value="pessoaFisica" checked={tipoCliente === "pessoaFisica"} onChange={() => {setTipoCliente("pessoaFisica"); if (tipoCliente === "pessoaJuridica") setCnpj("");}}/>
+            <label>Pessoa Física</label>
+          </div>
+          <div class="radio-button-container">
+            <input type="radio" value="pessoaJuridica" checked={tipoCliente === "pessoaJuridica"} onChange={() => {setTipoCliente("pessoaJuridica"); if (tipoCliente === "pessoaFisica") setCnpj("");}}/>
+            <label>Pessoa Jurídica</label>
+          </div>
         </div>
 
         <div className="cnpj-incricao-container">
           <div>
-            <label htmlFor="cnpj">CNPJ/CNPJ</label>
-            <input
-              type="text"
-              id="cnpj"
-              name="cnpj"
-              value={cnpj}
-              onChange={handleChangeCnpj}
-              maxLength="18"
-            />
+            <label htmlFor="cpf-cnpj">CPF/CNPJ</label>
+            <input type="text" id="cpf-cnpj" name="cpf-cnpj" value={cnpj} onChange={handleChangeCpfCnpj} maxLength="18"/>
           </div>
           <div>
             <label htmlFor="inscricao">INCRIÇÃO ESTADUAL</label>
-            <input
-              type="text"
-              id="inscricao"
-              name="inscricao"
-              value={inscricao}
-              onChange={handleChangeInscricao}
-              maxLength="10"
-            />
+            <input type="text" id="inscricao" name="inscricao" value={inscricao} onChange={handleChangeInscricao} maxLength="10"/>
           </div>
         </div>
 
         <label htmlFor="endereco">ENDEREÇO</label>
-        <input
-          type="text"
-          id="endereco"
-          name="endereco"
-          value={endereco}
-          onChange={(e) => setEndereco(e.target.value)}
-          maxLength="60"
-        />
+        <input type="text" id="endereco" name="endereco" value={endereco} onChange={(e) => setEndereco(e.target.value)} maxLength="60"/>
 
         <div className="localidade-container">
           <div>
             <label htmlFor="cidade">CIDADE</label>
-            <input
-              type="text"
-              id="cidade"
-              name="cidade"
-              value={cidade}
-              onChange={(e) => setCidade(e.target.value)}
-              maxLength="30"
-            />
+            <input type="text" id="cidade" name="cidade" value={cidade} onChange={(e) => setCidade(e.target.value)} maxLength="30"/>
           </div>
           <div>
             <label htmlFor="uf">UF</label>
-            <input
-              type="text"
-              id="uf"
-              name="uf"
-              value={uf}
-              onChange={(event) => handleChangeUf(event)}
-              maxLength="2"
-            />
+            <input type="text" id="uf" name="uf" value={uf} onChange={(event) => handleChangeUf(event)} maxLength="2"/>
           </div>
           <div>
             <label htmlFor="cep">CEP</label>
-            <input
-              type="text"
-              id="cep"
-              name="cep"
-              value={cep}
-              onChange={(event) => handleChangeCep(event)}
-              maxLength="9"
-            />
+            <input type="text" id="cep" name="cep" value={cep} onChange={(event) => handleChangeCep(event)} maxLength="9"/>
           </div>
         </div>
 
         <div className="contato-container">
           <div>
             <label htmlFor="telefone">TELEFONE</label>
-            <input
-              type="text"
-              id="telefone"
-              name="telefone"
-              value={telefone}
-              onChange={(event) => handleChangeTelefone(event)}
-              maxLength="16"
-            />
+            <input type="text" id="telefone" name="telefone" value={telefone} onChange={(event) => handleChangeTelefone(event)} maxLength="16" />
           </div>
           <div>
             <label htmlFor="email">E-MAIL</label>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              maxLength="60"
-            />
+            <input type="text" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} maxLength="60" />
           </div>
         </div>
       </div>
 
       <div className="botoes-crud">
         <div className="botoes-esquerda">
-          <button type="submit" name="btIncluir" id="btIncluir">
-            INCLUIR
-          </button>
-          <button type="submit" name="btDeletar" id="btDeletar">
-            DELETAR
-          </button>
-          <button type="submit" name="btAlterar" id="btAlterar">
-            ALTERAR
-          </button>
+          <button type="submit" name="btIncluir" id="btIncluir">INCLUIR</button>
+          <button type="submit" name="btDeletar" id="btDeletar">DELETAR</button>
+          <button type="submit" name="btAlterar" id="btAlterar">ALTERAR</button>
         </div>
         <div className="botoes-direita">
-          <button
-            type="submit"
-            name="btLimpar"
-            id="btLimpar"
-            onClick={limparCampos}
-          >
-            LIMPAR
-          </button>
-          <button type="submit" name="btConsultar" id="btConsultar">
-            CONSULTAR
-          </button>
+          <button type="submit" name="btLimpar" id="btLimpar" onClick={limparCampos}>LIMPAR</button>
+          <button type="submit" name="btConsultar" id="btConsultar">CONSULTAR</button>
         </div>
       </div>
     </div>
@@ -254,11 +168,23 @@ export const cpfMascara = (value) => {
     .replace(/(-\d{2})\d+?$/, "$1");
 };
 
-// MÁSCARA PARA RG
-export const rgMascara = (value) => {
+// MÁSCARA PARA CNPJ
+export const cnpjMascara = (value) => {
   const formattedValue = value.replace(/\D/g, "");
 
-  return formattedValue.slice(0, 10);
+  return formattedValue
+    .replace(/^(\d{2})(\d)/, "$1.$2")
+    .replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3")
+    .replace(/\.(\d{3})(\d)/, ".$1/$2")
+    .replace(/(\d{4})(\d)/, "$1-$2")
+    .slice(0, 18);
+};
+
+// MÁSCARA PARA INSCRIÇÃO ESTADUAL
+export const inscricaoMascara = (value) => {
+  const formattedValue = value.replace(/\D/g, "");
+
+  return formattedValue.slice(0, 9);
 };
 
 // MÁSCARA UF

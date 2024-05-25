@@ -87,139 +87,58 @@ const CadastroCliente = () => {
 
       <div className="formulario">
         <label htmlFor="nome">NOME</label>
-        <input
-          type="text"
-          id="nome"
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
-          maxlength="60"
-        />
+        <input type="text" id="nome" value={nome} onChange={(e) => setNome(e.target.value)} maxlength="60"/>
 
         <div className="cpf-rg-container">
           <div>
-            <label className="lb1" htmlFor="cpf">
-              CPF
-            </label>
-            <input
-              type="text"
-              id="cpf"
-              name="cpf"
-              value={cpf}
-              onChange={handleChangeCpf}
-              maxLength="14"
-            />
+            <label htmlFor="cpf">CPF</label>
+            <input type="text" id="cpf" name="cpf" value={cpf} onChange={handleChangeCpf} maxLength="14"/>
           </div>
           <div>
-            <label className="lb2" htmlFor="rg">
-              RG
-            </label>
-            <input
-              type="text"
-              id="rg"
-              name="rg"
-              value={rg}
-              onChange={handleChangeRg}
-              maxLength="10"
-            />
+            <label htmlFor="rg">RG</label>
+            <input type="text" id="rg" name="rg" value={rg} onChange={handleChangeRg} maxLength="10"/>
           </div>
         </div>
 
         <label htmlFor="endereco">ENDEREÇO</label>
-        <input
-          type="text"
-          id="endereco"
-          name="endereco"
-          value={endereco}
-          onChange={(e) => setEndereco(e.target.value)}
-          maxLength="60"
-        />
+        <input type="text" id="endereco" name="endereco" value={endereco} onChange={(e) => setEndereco(e.target.value)} maxLength="60"/>
 
         <div className="localidade-container">
           <div>
             <label htmlFor="cidade">CIDADE</label>
-            <input
-              type="text"
-              id="cidade"
-              name="cidade"
-              value={cidade}
-              onChange={(e) => setCidade(e.target.value)}
-              maxLength="30"
-            />
+            <input type="text" id="cidade" name="cidade" value={cidade} onChange={(e) => setCidade(e.target.value)} maxLength="30"/>
           </div>
           <div>
             <label htmlFor="uf">UF</label>
-            <input
-              type="text"
-              id="uf"
-              name="uf"
-              value={uf}
-              onChange={(event) => handleChangeUf(event)}
-              maxLength="2"
-            />
+            <input type="text" id="uf" name="uf" value={uf} onChange={(event) => handleChangeUf(event)} maxLength="2"/>
           </div>
           <div>
             <label htmlFor="cep">CEP</label>
-            <input
-              type="text"
-              id="cep"
-              name="cep"
-              value={cep}
-              onChange={(event) => handleChangeCep(event)}
-              maxLength="9"
-            />
+            <input type="text" id="cep" name="cep" value={cep} onChange={(event) => handleChangeCep(event)} maxLength="9"/>
           </div>
         </div>
 
         <div className="contato-container">
           <div>
             <label htmlFor="telefone">TELEFONE</label>
-            <input
-              type="text"
-              id="telefone"
-              name="telefone"
-              value={telefone}
-              onChange={(event) => handleChangeTelefone(event)}
-              maxLength="16"
-            />
+            <input type="text" id="telefone" name="telefone" value={telefone} onChange={(event) => handleChangeTelefone(event)} maxLength="16"/>
           </div>
           <div>
             <label htmlFor="email">E-MAIL</label>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              maxLength="60"
-            />
+            <input type="text" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} maxLength="60"/>
           </div>
         </div>
       </div>
 
       <div className="botoes-crud">
         <div className="botoes-esquerda">
-          <button type="submit" name="btIncluir" id="btIncluir">
-            INCLUIR
-          </button>
-          <button type="submit" name="btDeletar" id="btDeletar">
-            DELETAR
-          </button>
-          <button type="submit" name="btAlterar" id="btAlterar">
-            ALTERAR
-          </button>
+          <button type="submit" name="btIncluir" id="btIncluir">INCLUIR</button>
+          <button type="submit" name="btDeletar" id="btDeletar">DELETAR</button>
+          <button type="submit" name="btAlterar" id="btAlterar">ALTERAR</button>
         </div>
         <div className="botoes-direita">
-          <button
-            type="submit"
-            name="btLimpar"
-            id="btLimpar"
-            onClick={limparCampos}
-          >
-            LIMPAR
-          </button>
-          <button type="submit" name="btConsultar" id="btConsultar">
-            CONSULTAR
-          </button>
+          <button type="submit" name="btLimpar" id="btLimpar" onClick={limparCampos}>LIMPAR</button>
+          <button type="submit" name="btConsultar" id="btConsultar">CONSULTAR</button>
         </div>
       </div>
     </div>
