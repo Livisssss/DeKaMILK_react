@@ -4,18 +4,26 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .sidebar {
   position: fixed;
   width: 200px;
   height: 100%;
-  transition: width 0.7s ease;
+  transition: width 0.2s ease;
   display: flex;
   z-index: 1000;
 }
 
-.sidebar.closed {
+.sidebar.collapsed {
   width: 50px;
 }
 
@@ -24,7 +32,7 @@
   color: #f8f8ec;
   font-family: Poppins;
   padding: 20px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.1s ease;
 }
 
 .menu-item:hover {
@@ -49,10 +57,18 @@
   width: 250px;
 }
 
+.pro-sidebar .pro-menu {
+  padding-top: 0px;
+}
+
 .pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item {
   position: relative;
   display: flex;
   align-items: center;
   padding: 8px 3px 8px 2px;
   cursor: pointer;
+}
+
+.menu-item.active {
+  background-color: #000000;
 }
