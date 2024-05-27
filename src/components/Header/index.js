@@ -18,7 +18,7 @@ const Header = () => {
 
   if (location.pathname !== "/") {
     return (
-      <>
+      <div className="header-container">
         <header className="header">
           <button className="btMenu" onClick={toggleSidebar}>
             <img src="/imgs/menu_icon.png" alt="Menu" className="icon" />
@@ -30,11 +30,12 @@ const Header = () => {
             SAIR
           </button>
         </header>
-        {sidebarAberta && (
-          <div className="overlay" onClick={toggleSidebar}></div>
-        )}
+        <div
+          className={`overlay ${sidebarAberta ? "active" : ""}`}
+          onClick={toggleSidebar}
+        ></div>
         <BarraLateral aberta={sidebarAberta} />
-      </>
+      </div>
     );
   } else {
     return null;

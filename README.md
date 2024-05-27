@@ -19,6 +19,26 @@ Para entender melhor o contexto e a evolução do projeto, recomendamos a leitur
 - **Banco de Dados**: PostgreSQL
 - **Design**: Figma
 
+## Como rodar
+
+- Baixe o projeto no local desejado usando um
+```
+git clone
+```
+
+
+- Depois rode o comando para baixar as dependencias
+```
+npm install
+```
+
+
+- Em seguida para ele abrir no navegador utilize
+```
+npm start
+```
+
+
 ## Equipe
 
 - [Bruno Simionato](https://github.com/brunosimionato)
