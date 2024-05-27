@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../../../components/Header";
 import "./cadastroCliente.css";
@@ -15,6 +15,8 @@ const CadastroCliente = () => {
   const [endereco, setEndereco] = useState("");
   const [cidade, setCidade] = useState("");
   const [email, setEmail] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
+  const [fadeOut, setFadeOut] = useState(false);
 
   const handleButtonClick = (tela) => {
     setTelaCadastrosAberta(tela);
@@ -62,6 +64,35 @@ const CadastroCliente = () => {
     setTelefone(value);
   };
 
+  // FUNÇÃO PARA VERIFICAR CAMPOS OBRIGATÓRIOS
+  const verificarCamposObrigatorios = () => {
+    return nome && cpf && rg && telefone && email;
+  };
+
+  // FUNÇÃO PARA FECHAR POPUP
+  const fecharPopup = () => {
+    setFadeOut(true);
+    setTimeout(() => {
+      setShowPopup(false);
+      setFadeOut(false);
+    }, 300);
+  };
+
+  // FECHA O POP UP COM A TECLA ESC
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.keyCode === 27 && showPopup) {
+        fecharPopup();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyPress);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [showPopup]); // Certifique-se de adicionar showPopup como dependência para atualizar o evento conforme necessário
+
   // FUNÇÃO BOTÃO LIMPAR
   const limparCampos = () => {
     setNome("");
@@ -76,6 +107,15 @@ const CadastroCliente = () => {
     setCidade("");
   };
 
+  // FUNÇÃO BOTÃO INCLUIR
+  const incluirCliente = () => {
+    if (!verificarCamposObrigatorios()) {
+      setShowPopup(true);
+      return;
+    }
+    // Adicione aqui a lógica para enviar os dados do cliente
+  };
+
   return (
     <div>
       <Header />
@@ -86,61 +126,71 @@ const CadastroCliente = () => {
       />
 
       <div className="formulario">
-        <label htmlFor="nome">NOME</label>
-        <input type="text" id="nome" value={nome} onChange={(e) => setNome(e.target.value)} maxlength="60"/>
+        <label htmlFor="nome">NOME*</label>
+        <input type="text" id="nome" value={nome} onChange={(e) => setNome(e.target.value)} maxLength="60" />
 
         <div className="cpf-rg-container">
           <div>
-            <label htmlFor="cpf">CPF</label>
-            <input type="text" id="cpf" name="cpf" value={cpf} onChange={handleChangeCpf} maxLength="14"/>
+            <label htmlFor="cpf">CPF*</label>
+            <input type="text" id="cpf" name="cpf" value={cpf} onChange={handleChangeCpf} maxLength="14" />
           </div>
           <div>
-            <label htmlFor="rg">RG</label>
-            <input type="text" id="rg" name="rg" value={rg} onChange={handleChangeRg} maxLength="10"/>
+            <label htmlFor="rg">RG*</label>
+            <input type="text" id="rg" name="rg" value={rg} onChange={handleChangeRg} maxLength="10" />
           </div>
         </div>
 
         <label htmlFor="endereco">ENDEREÇO</label>
-        <input type="text" id="endereco" name="endereco" value={endereco} onChange={(e) => setEndereco(e.target.value)} maxLength="60"/>
+        <input type="text" id="endereco" name="endereco" value={endereco} onChange={(e) => setEndereco(e.target.value)} maxLength="60" />
 
         <div className="localidade-container">
           <div>
             <label htmlFor="cidade">CIDADE</label>
-            <input type="text" id="cidade" name="cidade" value={cidade} onChange={(e) => setCidade(e.target.value)} maxLength="30"/>
+            <input type="text" id="cidade" name="cidade" value={cidade} onChange={(e) => setCidade(e.target.value)} maxLength="30" />
           </div>
           <div>
             <label htmlFor="uf">UF</label>
-            <input type="text" id="uf" name="uf" value={uf} onChange={(event) => handleChangeUf(event)} maxLength="2"/>
+            <input type="text" id="uf" name="uf" value={uf} onChange={(event) => handleChangeUf(event)} maxLength="2" />
           </div>
           <div>
             <label htmlFor="cep">CEP</label>
-            <input type="text" id="cep" name="cep" value={cep} onChange={(event) => handleChangeCep(event)} maxLength="9"/>
+            <input type="text" id="cep" name="cep" value={cep} onChange={(event) => handleChangeCep(event)} maxLength="9" />
           </div>
         </div>
 
         <div className="contato-container">
           <div>
-            <label htmlFor="telefone">TELEFONE</label>
-            <input type="text" id="telefone" name="telefone" value={telefone} onChange={(event) => handleChangeTelefone(event)} maxLength="16"/>
+            <label htmlFor="telefone">TELEFONE*</label>
+            <input type="text" id="telefone" name="telefone" value={telefone} onChange={(event) => handleChangeTelefone(event)} maxLength="16" />
           </div>
           <div>
-            <label htmlFor="email">E-MAIL</label>
-            <input type="text" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} maxLength="60"/>
+            <label htmlFor="email">E-MAIL*</label>
+            <input type="text" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} maxLength="60" />
           </div>
         </div>
       </div>
 
       <div className="botoes-crud">
         <div className="botoes-esquerda">
-          <button type="submit" name="btIncluir" id="btIncluir">INCLUIR</button>
-          <button type="submit" name="btDeletar" id="btDeletar">DELETAR</button>
-          <button type="submit" name="btAlterar" id="btAlterar">ALTERAR</button>
+          <button type="button" name="btIncluir" id="btIncluir" onClick={incluirCliente}>INCLUIR</button>
+          <button type="button" name="btDeletar" id="btDeletar">DELETAR</button>
+          <button type="button" name="btAlterar" id="btAlterar">ALTERAR</button>
         </div>
         <div className="botoes-direita">
-          <button type="submit" name="btLimpar" id="btLimpar" onClick={limparCampos}>LIMPAR</button>
-          <button type="submit" name="btConsultar" id="btConsultar">CONSULTAR</button>
+          <button type="button" name="btLimpar" id="btLimpar" onClick={limparCampos}>LIMPAR</button>
+          <button type="button" name="btConsultar" id="btConsultar">CONSULTAR</button>
         </div>
       </div>
+
+      {showPopup && (
+      <div className={`popup-overlay ${fadeOut ? 'fade-out' : ''}`}>
+        <div className={`popup ${fadeOut ? 'fade-out' : ''}`}>
+          <p>Por favor, preencha todos os campos <br /> obrigatórios.</p>
+          <button onClick={fecharPopup}>Fechar</button>
+        </div>
+      </div>
+    )}
+
     </div>
   );
 };
