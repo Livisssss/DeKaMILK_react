@@ -1,0 +1,142 @@
+/* Define o estilo para o formulário */
+.formulario {
+  width: 45%;
+  margin: 0 auto;
+  margin-top: 60px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Define o estilo para os inputs dentro do formulário */
+.formulario input {
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  background: #e0e3e6;
+  border: none;
+  font-size: 17px;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
+  margin-bottom: 17px;
+  font-family: "Poppins", sans-serif;
+  outline: none;
+}
+
+/* Define o estilo para as labels dentro do formulário */
+.formulario label {
+  text-align: left;
+}
+
+.lb2-receber {
+  color: #219653;
+  font-weight: 900;
+}
+
+/* Define o estilo para o container de CPF e RG */
+.data-valor-container {
+  text-align: left; /* Alinha o texto à esquerda dentro do container */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 25px; /* Espaçamento horizontal entre as colunas */
+}
+
+/* Define o estilo para o container de descricao */
+.descricao-container {
+  width: 100%; /* ou ajuste conforme necessário */
+}
+
+.descricao-container textarea {
+  width: 100%;
+  height: 170px; /* Ajuste a altura conforme necessário */
+  border-radius: 10px;
+  background: #e0e3e6;
+  border: none;
+  font-size: 17px;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-bottom: 17px;
+  font-family: "Poppins", sans-serif;
+  outline: none;
+  resize: none;
+}
+
+/* Botões do CRUD*/
+.botoes-crud {
+  width: 45%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between; /* Distribui os itens igualmente ao longo do eixo principal */
+  align-items: center; /* Alinha os itens verticalmente ao centro */
+}
+
+.botoes-esquerda {
+  display: flex;
+  justify-content: flex-start; /* Alinha os itens à esquerda */
+  gap: 20px; /* Espaçamento entre os botões */
+}
+
+.botoes-direita {
+  display: flex;
+  justify-content: flex-end; /* Alinha os itens à direita */
+  gap: 20px; /* Espaçamento entre os botões */
+}
+
+.botoes-crud button {
+  width: 130px;
+  height: 50px;
+  border-radius: 10px;
+  font-size: 17px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  margin-top: 50px;
+  transition: background-color 0.2s ease;
+}
+
+/* Estilos específicos para cada botão */
+button[name="btIncluir"] {
+  background-color: #27ae60;
+  color: #f8f8ec;
+}
+
+button[name="btDeletar"] {
+  background-color: #c0392b;
+  color: #f8f8ec;
+}
+
+button[name="btAlterar"] {
+  background-color: #f39c12;
+  color: #f8f8ec;
+}
+
+button[name="btLimpar"] {
+  background-color: #6d8693;
+  color: #f8f8ec;
+}
+
+button[name="btConsultar"] {
+  background-color: #2b4c7e;
+  color: #f8f8ec;
+}
+
+/* Efeitos de hover */
+button[name="btIncluir"]:hover {
+  background-color: #219653;
+}
+
+button[name="btDeletar"]:hover {
+  background-color: #a93226;
+}
+
+button[name="btAlterar"]:hover {
+  background-color: #d68910;
+}
+
+button[name="btLimpar"]:hover {
+  background-color: #5c7686;
+}
+
+button[name="btConsultar"]:hover {
+  background-color: #1f3a66;
+}
