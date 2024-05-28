@@ -33,4 +33,5 @@
 /* Altera a cor dos botões conforme a tela que está sendo exibida*/
 .botoes button.selecionado {
   background-color: #f2f2f2;
+  color: #fff;
 }

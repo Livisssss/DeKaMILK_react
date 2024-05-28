@@ -4,7 +4,7 @@ import "./LançamentoReceber.css";
 import MenuFinanceiro from "../../components/MenuFinanceiro";
 
 const LançamentoReceber = () => {
-  const [telaCadastrosAberta, setTelaLançamentosAberta] = useState("Receber");
+  const [telaCadastrosAberta, setTelaLançamentosAberta] = useState("RECEBER");
   const [operacao, setOperacao] = useState("");
   const [cliente, setCliente] = useState("");
   const [data, setData] = useState("");
