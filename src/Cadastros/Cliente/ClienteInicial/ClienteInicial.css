@@ -1,22 +1,17 @@
 /* TABELA */
 table {
-  width: 100%; /* Largura da tabela em porcentagem */
+  width: 100%; 
   border-collapse: collapse;
-  margin: 60px auto; /* Margens usando valores relativos */
-  display: block; /* Necessário para que a tabela tenha um contêiner rolável */
-  overflow-x: auto; /* Permite rolagem horizontal em dispositivos menores */
+  margin: 60px auto;
+  display: block; 
+  overflow-x: auto; 
 }
 
 thead, tbody {
   display: table;
   width: 100%;
-  text-align: center; /* Alinha o texto à esquerda */
-}
-
-tbody {
-  max-height: 550px; /* Define a altura máxima do corpo da tabela */
-  overflow-y: scroll; /* Adiciona rolagem vertical */
-  display: block; /* Permitir a rolagem vertical */
+  text-align: center;
+  overflow-y: scroll;
 }
 
 thead th, tbody td {

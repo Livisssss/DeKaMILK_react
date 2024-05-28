@@ -7,7 +7,7 @@ import "./BarraLateral.css";
 const BarraLateral = ({ aberta }) => {
   const menuItems = [
     { name: "home", label: "Home" },
-    { name: "clienteInicial", label: "Cadastros" },
+    { name: "cadastro", label: "Cadastros" },
     { name: "financeiro", label: "Financeiro" },
     { name: "relatorio", label: "Relatório" },
     { name: "controle", label: "Controle" },
@@ -52,7 +52,7 @@ const BarraLateral = ({ aberta }) => {
       <ProSidebar className="sidebar" collapsed={!isSidebarOpen}>
         <Menu>
           {menuItems.map((item) => {
-            const isActive = location.pathname === `/${item.name}`;
+            const isActive = location.pathname.startsWith(`/${item.name}`);
             return (
               <MenuItem
                 key={item.name}
