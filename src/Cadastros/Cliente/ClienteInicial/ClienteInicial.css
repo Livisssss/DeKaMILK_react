@@ -1,38 +1,33 @@
-/* TABELA */
+.table-container {
+  display: inline-block;
+  margin-left: 16%;
+  margin-top: 3%;
+  height: 600px;
+  overflow-y: auto;
+  overflow-x: auto;
+  position: relative;
+  border-radius: 15px;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.table-container::-webkit-scrollbar {
+    display: none; 
+}
+
 table {
-  width: 100%; 
-  border-collapse: collapse;
-  margin: 60px auto;
-  display: block; 
-  overflow-x: auto; 
-}
-
-thead, tbody {
-  display: table;
   width: 100%;
-  text-align: center;
-  overflow-y: scroll;
-}
-
-thead th, tbody td {
-  padding: 0.8em; /* Use unidades de medida relativas para o espaçamento */
-  box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura e altura total das células */
-  width: auto; /* Garante que todas as células tenham a mesma largura inicial */
+  border-collapse: collapse;
+  display:contents;
+  align-items: center;
 }
 
 thead th {
   background-color: #f2f2f2;
-  position: sticky; /* Torna o cabeçalho fixo */
-  top: 0; /* Fixa o cabeçalho no topo */
-  z-index: 2; /* Garante que o cabeçalho fique acima do corpo da tabela */
-}
-
-tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-tbody tr:nth-child(odd) {
-  background-color: #d2d5d8;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 thead th:first-child {
@@ -41,6 +36,14 @@ thead th:first-child {
 
 thead th:last-child {
   border-top-right-radius: 10px;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #d2d5d8;
 }
 
 tbody tr:last-child td:first-child {
@@ -52,33 +55,20 @@ tbody tr:last-child td:last-child {
 }
 
 
-
-
-
-
-
-
-
-
-/* ClienteInicial.css */
-
+/* BOTÃO EDIÇÃO CLIENTES - TABELA*/
 .editar-button {
-  background-color: #2B4C7E; /* Cor de fundo do botão */
-  color: white; /* Cor do texto do botão */
-  border: none; /* Remova a borda */
-  border-radius: 5px; /* Adicione bordas arredondadas */
-  padding: 8px 16px; /* Adicione um preenchimento interno */
-  cursor: pointer; /* Mude o cursor para indicar que é clicável */
-  transition: background-color 0.3s; /* Adicione uma transição suave para a mudança de cor de fundo */
+  background-color: #8B322C;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 
-  /* Estilize o hover para mudar a cor de fundo quando o botão é hover */
   &:hover {
-    background-color: #1F3A66;
+    background-color: #820300;
   }
 }
-
-  
-
 
 
 /* BOTÃO ADICIONAR CLIENTES */
@@ -102,5 +92,5 @@ tbody tr:last-child td:last-child {
 }
 
 .btAdicionar button:hover {
-  background-color: #457cce;
+  background-color: #1F3A66;
 }
