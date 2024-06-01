@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Header from "../../../components/Header";
 import "./ClienteInicial.css";
 import MenuCadastros from "../../components/MenuCadastros";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
 const ClienteInicial = () => {
@@ -14,7 +14,6 @@ const ClienteInicial = () => {
     setTelaCadastrosAberta(tela);
   };
 
-  // Retorno dos dados de clientes para a tabela
   useEffect(() => {
     const fetchClientes = async () => {
       try {
@@ -23,7 +22,6 @@ const ClienteInicial = () => {
           throw new Error("Erro ao buscar os clientes do banco de dados.");
         }
         const clientesData = await response.json();
-        console.log(clientesData);
         setClientes(clientesData);
       } catch (error) {
         console.error("Erro ao buscar os clientes:", error);
@@ -33,6 +31,7 @@ const ClienteInicial = () => {
     fetchClientes();
   }, []);
 
+  
   return (
     <div>
       <Header />
@@ -40,8 +39,7 @@ const ClienteInicial = () => {
         telaSelecionada={telaCadastrosAberta}
         handleButtonClick={handleButtonClick}
       />
-
-      <div className="tabela-container">
+      <div className="table-container">
         <table>
           <thead>
             <tr>
@@ -56,7 +54,6 @@ const ClienteInicial = () => {
               <th>EDITAR</th>
             </tr>
           </thead>
-
           <tbody>
             {clientes.map((cliente) => (
               <tr key={cliente.id}>
@@ -78,8 +75,6 @@ const ClienteInicial = () => {
           </tbody>
         </table>
       </div>
-
-
       <div className="btAdicionar">
         <Link to="/cadastroCliente">
           <button>+</button>
