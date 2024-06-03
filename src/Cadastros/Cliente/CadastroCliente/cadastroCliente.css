@@ -27,17 +27,13 @@
     text-align: left;
 }
 
-
-
 /* ESTILO CONTAINER CPF E RG */
-.cpf-rg-container {
+.cpf-cnpj-container {
     text-align: left;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 25px;
 }
-
-
 
 /* ESTILO CONTAINER LOCALIDADE */
 .localidade-container {
@@ -52,8 +48,6 @@
     flex-direction: column;
 }
 
-
-
 /* ESTILO CONTAINER CONTATO */
 .contato-container {
     text-align: left;
@@ -61,8 +55,6 @@
     grid-template-columns: 330px 1fr;
     grid-column-gap: 25px;
 }
-
-
 
 /* BOTÕES CRUD*/
 .botoes-crud {
@@ -145,9 +137,7 @@ button[name="btConsultar"]:hover {
     background-color: #1F3A66;
 }
 
-
-
-/* POP-UP AVISO*/
+/* POP-UPS*/
 .popup-overlay {
     position: fixed;
     top: 0;
@@ -221,6 +211,38 @@ button[name="btConsultar"]:hover {
       transform: scale(0.8);
     }
   }
+
+  /* RADIO BUTTONS */
+.radio-buttons {
+  display: grid;
+  grid-template-columns: min-content min-content;
+  grid-column-gap: 50px;
+  align-items: center;
+  justify-items: start;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.radio-button-container {
+  display: grid;
+  grid-template-columns: min-content auto;
+  align-items: center;
+  margin-top: -10px;
+}
+
+.radio-buttons label {
+  white-space: nowrap;
+}
+
+.radio-buttons input[type="radio"] {
+  margin-top: 15px; 
+  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+
+
 
 
 

@@ -7,7 +7,6 @@
   overflow-x: auto;
   position: relative;
   border-radius: 15px;
-
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
