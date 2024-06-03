@@ -90,12 +90,12 @@ const CadastroFornecedor = () => {
         <label htmlFor="nome">NOME</label>
         <input type="text" id="nome" value={nome} onChange={(e) => setNome(e.target.value)} maxlength="60"/>
 
-        <div class="radio-buttons">
-          <div class="radio-button-container">
+        <div className="radio-buttons">
+          <div className="radio-button-container">
             <input type="radio" value="pessoaFisica" checked={tipoCliente === "pessoaFisica"} onChange={() => {setTipoCliente("pessoaFisica"); if (tipoCliente === "pessoaJuridica") setCnpj("");}}/>
             <label>Pessoa Física</label>
           </div>
-          <div class="radio-button-container">
+          <div className="radio-button-container">
             <input type="radio" value="pessoaJuridica" checked={tipoCliente === "pessoaJuridica"} onChange={() => {setTipoCliente("pessoaJuridica"); if (tipoCliente === "pessoaFisica") setCnpj("");}}/>
             <label>Pessoa Jurídica</label>
           </div>

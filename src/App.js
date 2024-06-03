@@ -12,6 +12,7 @@ import CadastroOperacaoInicial from "./Cadastros/Operacao/OperacaoInicial";
 import CadastroOperacao from "./Cadastros/Operacao/CadastroOperacao";
 import Financeiro from "./Financeiro/Pagar/LançamentoPagar";
 import FinanceiroReceber from "./Financeiro/Receber/LançamentoReceber";
+import Seguranca from "./Segurança"
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/cadastroOperacao" element={<CadastroOperacao />} />
         <Route path="/financeiro" element={<Financeiro />} />
         <Route path="/financeiroReceber" element={<FinanceiroReceber />} />
+        <Route path="seguranca" element={<Seguranca />} />
       </Routes>
     </Router>
   );

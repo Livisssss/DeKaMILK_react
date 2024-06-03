@@ -15,7 +15,6 @@ const CadastroCliente = () => {
   const [cidade, setCidade] = useState("");
   const [email, setEmail] = useState("");
   const [showPopup, setShowPopup] = useState(false);
-  const [fadeOut, setFadeOut] = useState(false);
 
   const handleButtonClick = (tela) => {
     setTelaCadastrosAberta(tela);
@@ -70,10 +69,8 @@ const CadastroCliente = () => {
 
   // FUNÇÃO PARA FECHAR POPUP
   const fecharPopup = () => {
-    setFadeOut(true);
     setTimeout(() => {
       setShowPopup(false);
-      setFadeOut(false);
     }, 300);
   };
 
@@ -182,9 +179,9 @@ const CadastroCliente = () => {
       </div>
 
       {showPopup && (
-      <div className={`popup-overlay ${fadeOut ? 'fade-out' : ''}`}>
-        <div className={`popup ${fadeOut ? 'fade-out' : ''}`}>
-          <p>Por favor, preencha todos os campos <br /> obrigatórios.</p>
+      <div className="popup-overlay">
+        <div className="popup-clientes">
+          <p>Por favor, preencha todos os campos obrigatórios.</p>
           <button onClick={fecharPopup}>Fechar</button>
         </div>
       </div>
