@@ -1,34 +1,75 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./MenuCadastros.css";
 
 const MenuCadastros = ({ telaSelecionada, handleButtonClick }) => {
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState("");
+  const [nextPath, setNextPath] = useState("");
+  const [nextTela, setNextTela] = useState("");
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handlePopupConfirmation = (confirmed) => {
+    setShowPopup(false);
+    if (confirmed) {
+      handleButtonClick(nextTela);
+      navigate(nextPath);
+    }
+  };
+
+  const handleNavigation = (path, tela) => {
+    const currentPath = location.pathname;
+    const isCadastroPath =
+      currentPath === "/cadastroCliente" ||
+      currentPath === "/cadastroFornecedor" ||
+      currentPath === "/cadastroOperacao";
+
+    if (isCadastroPath && telaSelecionada !== tela) {
+      setPopupMessage("Tem certeza que deseja sair? Seu registro será apagado.");
+      setShowPopup(true);
+      setNextPath(path);
+      setNextTela(tela);
+    } else {
+      handleButtonClick(tela);
+      navigate(path);
+      console.log(`Botão ${tela} clicado!`);
+    }
+  };
+
   return (
     <div className="botoes">
-      <Link to="/cadastro">
-        <button
-          className={telaSelecionada === "CLIENTES" ? "selecionado" : ""}
-          onClick={() => handleButtonClick("CLIENTES")}
-        >
-          CLIENTES
-        </button>
-      </Link>
-      <Link to="/cadastroFornecedorInicial">
-        <button
-          className={telaSelecionada === "FORNECEDORES" ? "selecionado" : ""}
-          onClick={() => handleButtonClick("FORNECEDORES")}
-        >
-          FORNECEDORES
-        </button>
-      </Link>
-      <Link to="/cadastroOperacaoInicial">
-        <button
-          className={telaSelecionada === "OPERAÇÕES" ? "selecionado" : ""}
-          onClick={() => handleButtonClick("OPERAÇÕES")}
-        >
-          OPERAÇÕES
-        </button>
-      </Link>
+      <button
+        className={telaSelecionada === "CLIENTES" ? "selecionado" : ""}
+        onClick={() => handleNavigation("/cadastro", "CLIENTES")}
+      >
+        CLIENTES
+      </button>
+
+      <button
+        className={telaSelecionada === "FORNECEDORES" ? "selecionado" : ""}
+        onClick={() => handleNavigation("/cadastroFornecedorInicial", "FORNECEDORES")}
+      >
+        FORNECEDORES
+      </button>
+
+      <button
+        className={telaSelecionada === "OPERAÇÕES" ? "selecionado" : ""}
+        onClick={() => handleNavigation("/cadastroOperacaoInicial", "OPERAÇÕES")}
+      >
+        OPERAÇÕES
+      </button>
+
+      {showPopup && (
+        <div className="popup-overlay">
+          <div className="popup-navegation">
+            <p>{popupMessage}</p>
+            <button onClick={() => handlePopupConfirmation(true)}>SIM</button>
+            <button onClick={() => handlePopupConfirmation(false)}>NÃO</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

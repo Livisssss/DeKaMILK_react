@@ -27,13 +27,17 @@
     text-align: left;
 }
 
+
+
 /* ESTILO CONTAINER CPF E RG */
-.cpf-cnpj-container {
+.cpf-rg-container {
     text-align: left;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 25px;
 }
+
+
 
 /* ESTILO CONTAINER LOCALIDADE */
 .localidade-container {
@@ -48,6 +52,8 @@
     flex-direction: column;
 }
 
+
+
 /* ESTILO CONTAINER CONTATO */
 .contato-container {
     text-align: left;
@@ -55,6 +61,8 @@
     grid-template-columns: 330px 1fr;
     grid-column-gap: 25px;
 }
+
+
 
 /* BOTÕES CRUD*/
 .botoes-crud {
@@ -137,114 +145,45 @@ button[name="btConsultar"]:hover {
     background-color: #1F3A66;
 }
 
-/* POP-UPS*/
+
+
+/* POP-UP AVISO*/
 .popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    opacity: 0;
-    animation: fadeIn 0.3s forwards;
-  }
-  
-  .popup {
-    background-color: #F8F8EC;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transform: scale(0.8);
-    animation: popupIn 0.3s forwards;
-  }
-  
-  .popup button {
-    margin-top: 10px;
-    font-family: 'Poppins', sans-serif;
-    padding: 10px 20px;
-    text-transform: uppercase;
-    background-color: #2B4C7E;
-    color: #F8F8EC;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  
-  .popup button:hover {
-    background-color: #1F3A66;;
-  }
-  
-  @keyframes fadeIn {
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes popupIn {
-    to {
-      transform: scale(1);
-    }
-  }
-  
-  .popup-overlay.fade-out {
-    animation: fadeOut 0.1s forwards;
-  }
-  
-  .popup.fade-out {
-    animation: popupOut 0.1s forwards;
-  }
-  
-  @keyframes fadeOut {
-    to {
-      opacity: 0;
-    }
-  }
-  
-  @keyframes popupOut {
-    to {
-      transform: scale(0.8);
-    }
-  }
-
-  /* RADIO BUTTONS */
-.radio-buttons {
-  display: grid;
-  grid-template-columns: min-content min-content;
-  grid-column-gap: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
   align-items: center;
-  justify-items: start;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 
-.radio-button-container {
-  display: grid;
-  grid-template-columns: min-content auto;
-  align-items: center;
-  margin-top: -10px;
+.popup-clientes {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-.radio-buttons label {
-  white-space: nowrap;
+.popup-clientes button{
+  padding: 10px;
+  background-color: #e0e3e6;
+  width: 130px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  color: #383939;
+  font-family: Poppins;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-.radio-buttons input[type="radio"] {
-  margin-top: 15px; 
-  margin-right: 20px;
-  width: 20px;
-  height: 20px;
+.popup-clientes button:hover{
+  background-color: #f2f2f2;
 }
-
-
-
-
-
-
-
-

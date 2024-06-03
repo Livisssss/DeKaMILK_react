@@ -1,271 +1,117 @@
 import React, { useState, useEffect } from "react";
 import Header from "../../../components/Header";
-import { useNavigate, useParams } from "react-router-dom";
 import "./cadastroCliente.css";
 import MenuCadastros from "../../components/MenuCadastros";
 
 const CadastroCliente = () => {
-  const { clienteId } = useParams();
-
-  const navigate = useNavigate();
-  
   const [telaCadastrosAberta, setTelaCadastrosAberta] = useState("CLIENTES");
   const [nome, setNome] = useState("");
   const [cpf, setCpf] = useState("");
-  const [cnpj, setCnpj] = useState("");
+  const [rg, setRg] = useState("");
   const [uf, setUf] = useState("");
   const [cep, setCep] = useState("");
   const [telefone, setTelefone] = useState("");
   const [endereco, setEndereco] = useState("");
   const [cidade, setCidade] = useState("");
   const [email, setEmail] = useState("");
-  const [tipoPessoa, setTipoPessoa] = useState(null);
-  const [idCliente, setIdCliente] = useState(null); // Corrigido para setClienteId
-  
-  useEffect(() => {
-    if (clienteId) {
-      setIdCliente(clienteId);
-      fetchCliente(clienteId);
-    }
-  }, [clienteId]);
-  
-
-  const fetchCliente = async (clienteId) => {
-    try {
-      const response = await fetch(`http://localhost:3000/api/v1/cliente/${clienteId}`);
-      if (!response.ok) {
-        throw new Error("Erro ao buscar os detalhes do cliente.");
-      }
-      const cliente = await response.json();
-      // Atualizar o estado do componente com os detalhes do cliente obtidos da API
-      setNome(cliente.nome);
-      setCpf(cliente.cpf);
-      setCnpj(cliente.cnpj);
-      setEndereco(cliente.endereco);
-      setCidade(cliente.cidade);
-      setUf(cliente.uf);
-      setCep(cliente.cep);
-      setTelefone(cliente.telefone);
-      setEmail(cliente.email);
-      // Atualize os outros campos conforme necessário
-    } catch (error) {
-      console.error("Erro ao buscar os detalhes do cliente:", error);
-      // Tratar o erro aqui, por exemplo, exibindo uma mensagem para o usuário
-    }
-  };
-  
-  
-
-
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleButtonClick = (tela) => {
     setTelaCadastrosAberta(tela);
   };
 
+  // APLICA A MASCARA CPF E ATUALIZA O INPUT
   const handleChangeCpf = (event) => {
     let value = event.target.value;
     value = value.replace(/\D/g, "");
     value = cpfMascara(value);
+
     setCpf(value);
   };
 
-  const handleChangeCnpj = (event) => {
+  // APLICA A MASCARA RG E ATUALIZA O INPUT
+  const handleChangeRg = (event) => {
     let value = event.target.value;
-    value = cnpjMascara(value);
-    setCnpj(value);
+    value = rgMascara(value);
+
+    setRg(value);
   };
 
+  // APLICA A MASCARA UF E ATUALIZA O INPUT
   const handleChangeUf = (event) => {
     let value = event.target.value;
+    // Aplica a máscara
     value = ufMascara(value);
+
     setUf(value);
   };
 
+  // APLICA A MASCARA CEP E ATUALIZA O INPUT
   const handleChangeCep = (event) => {
     let value = event.target.value;
     value = cepMascara(value);
+
     setCep(value);
   };
 
+  // APLICA A MASCARA DE TELEFONE E ATUALIZA O INPUT
   const handleChangeTelefone = (event) => {
     let value = event.target.value;
     value = telefoneMascara(value);
+
     setTelefone(value);
   };
 
+  // FUNÇÃO PARA VERIFICAR CAMPOS OBRIGATÓRIOS
   const verificarCamposObrigatorios = () => {
-    if (tipoPessoa === "fisica") {
-      return nome && telefone && email && cpf && cpf.length === 14;
-    } else if (tipoPessoa === "juridica") {
-      return nome && telefone && email && cnpj && cnpj.length === 18;
-    } else {
-      return false; // Se o tipo de pessoa for nulo, retorna falso
-    }
+    return nome && cpf && rg && telefone && email;
   };
 
-  const handleTipoPessoaChange = (newTipoPessoa) => {
-    setTipoPessoa(newTipoPessoa);
-    if (newTipoPessoa === "fisica") {
-      setCnpj(""); // Limpa o CNPJ ao selecionar Pessoa Física
-    } else {
-      setCpf(""); // Limpa o CPF ao selecionar Pessoa Jurídica
-    }
+  // FUNÇÃO PARA FECHAR POPUP
+  const fecharPopup = () => {
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 300);
   };
 
-  const handleAlterarClick = async () => {
-    if (!idCliente) {
-      console.error("ID do cliente não definido.");
-      return;
-    }
-
-    console.log("Botão de alterar clicado");
-
-    const cliente = {
-      nome,
-      cpf: tipoPessoa === "fisica" ? cpf : undefined,
-      cnpj: tipoPessoa === "juridica" ? cnpj : undefined,
-      endereco,
-      cidade,
-      uf,
-      cep,
-      telefone,
-      email,
+  // FECHA O POP UP COM A TECLA ESC
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.keyCode === 27 && showPopup) {
+        fecharPopup();
+      }
     };
 
-    try {
-      const response = await fetch(`http://localhost:3000/api/v1/cliente/${idCliente}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(cliente),
-      });
+    document.addEventListener("keydown", handleKeyPress);
 
-      if (response.ok) {
-        alert("Cliente alterado com sucesso.");
-        limparCampos(); // Chama a função para limpar os campos
-      } else {
-        const result = await response.json();
-        console.error("Erro ao alterar cliente:", result);
-        alert("Erro ao alterar cliente. Verifique os dados e tente novamente.");
-      }
-    } catch (error) {
-      console.error("Erro ao alterar cliente:", error);
-      alert("Erro ao alterar cliente. Tente novamente.");
-    }
-  };
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [showPopup]); // Certifique-se de adicionar showPopup como dependência para atualizar o evento conforme necessário
 
+  // FUNÇÃO BOTÃO LIMPAR
   const limparCampos = () => {
     setNome("");
     setCpf("");
-    setCnpj("");
+    setRg("");
     setEndereco("");
     setCidade("");
     setUf("");
     setCep("");
     setTelefone("");
     setEmail("");
-    setTipoPessoa("null");
+    setCidade("");
   };
 
-
-
-  // BOTÃO INCLUIR
-  const incluirCliente = async () => {
-    // Verifica se todos os campos obrigatórios estão preenchidos
+  // FUNÇÃO BOTÃO INCLUIR
+  const incluirCliente = () => {
     if (!verificarCamposObrigatorios()) {
-      alert("Por favor, preencha todos os campos obrigatórios.");
+      setShowPopup(true);
       return;
     }
-  
-    // Verifica se os campos com máscara estão preenchidos corretamente
-    if (tipoPessoa === "fisica") {
-      if (!cpf || cpf.length !== 14) {
-        alert("Por favor, preencha o CPF corretamente.");
-        return;
-      }
-    } else if (tipoPessoa === "juridica") {
-      if (!cnpj || cnpj.length !== 18) {
-        alert("Por favor, preencha o CNPJ corretamente.");
-        return;
-      }
-    }
-  
-    if (!cep || cep.length !== 9) {
-      alert("Por favor, preencha o CEP corretamente.");
-      return;
-    }
-  
-    if (!telefone || telefone.length !== 16) {
-      alert("Por favor, preencha o telefone corretamente.");
-      return;
-    }
-  
-    // Agora envia os dados para o servidor
-    const cliente = {
-      nome,
-      cpf: tipoPessoa === "fisica" ? cpf : undefined, // Só envia CPF se for pessoa física
-      cnpj: tipoPessoa === "juridica" ? cnpj : undefined, // Só envia CNPJ se for pessoa jurídica
-      endereco,
-      cidade,
-      uf,
-      cep,
-      telefone,
-      email,
-    };
-  
-    console.log("Enviando cliente:", cliente);
-  
-    try {
-      const response = await fetch("http://localhost:3000/api/v1/cliente", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(cliente),
-      });
-  
-      const result = await response.json();
-  
-      if (response.ok) {
-        limparCampos();
-      } else if (response.status === 422) {
-        console.error("Erro de validação:", result);
-        if (result.error === 'Já existe um cliente cadastrado com este CPF.') {
-          alert("Já existe um cliente cadastrado com este CPF.");
-          setCpf(""); // Limpa o campo CPF
-        } else if (result.error === 'Já existe um cliente cadastrado com este CNPJ.') {
-          alert("Já existe um cliente cadastrado com este CNPJ.");
-          setCnpj(""); // Limpa o campo CNPJ
-        } else {
-          alert("Erro ao incluir cliente. Verifique os dados e tente novamente.");
-        }
-      } else {
-        console.error("Erro inesperado:", result);
-        alert("Erro ao incluir cliente. Tente novamente.");
-      }
-    } catch (error) {
-      console.error("Erro ao incluir cliente:", error);
-      alert("Erro ao incluir cliente. Tente novamente.");
-    }
+    // Adicione aqui a lógica para enviar os dados do cliente
   };
-  
 
-
-
-
-
-
-
-  
-
-
-
-
-  
-  
-  
-  
   return (
     <div>
       <Header />
@@ -279,25 +125,14 @@ const CadastroCliente = () => {
         <label htmlFor="nome">NOME*</label>
         <input type="text" id="nome" value={nome} onChange={(e) => setNome(e.target.value)} maxLength="60" />
 
-        <div className="radio-buttons">
-          <div className="radio-button-container">
-            <input type="radio" value="fisica" name="tipoPessoa" checked={tipoPessoa === "fisica"} onChange={() => handleTipoPessoaChange("fisica")} />
-            <label>Pessoa Física</label>
-          </div>
-          <div className="radio-button-container">
-            <input type="radio" value="juridica" name="tipoPessoa" checked={tipoPessoa === "juridica"} onChange={() => handleTipoPessoaChange("juridica")} />
-            <label>Pessoa Jurídica</label>
-          </div>
-        </div>
-
-        <div className="cpf-cnpj-container">
+        <div className="cpf-rg-container">
           <div>
             <label htmlFor="cpf">CPF*</label>
-            <input type="text" id="cpf" name="cpf" value={cpf} onChange={handleChangeCpf} maxLength="14" disabled={tipoPessoa !== "fisica"} />
+            <input type="text" id="cpf" name="cpf" value={cpf} onChange={handleChangeCpf} maxLength="14" />
           </div>
           <div>
-            <label htmlFor="cnpj">CNPJ*</label>
-            <input type="text" id="cnpj" name="cnpj" value={cnpj} onChange={handleChangeCnpj} maxLength="18" disabled={tipoPessoa !== "juridica"} />
+            <label htmlFor="rg">RG*</label>
+            <input type="text" id="rg" name="rg" value={rg} onChange={handleChangeRg} maxLength="10" />
           </div>
         </div>
 
@@ -335,13 +170,23 @@ const CadastroCliente = () => {
         <div className="botoes-esquerda">
           <button type="button" name="btIncluir" id="btIncluir" onClick={incluirCliente}>INCLUIR</button>
           <button type="button" name="btDeletar" id="btDeletar">DELETAR</button>
-          <button type="button" name="btAlterar" id="btAlterar" onClick={handleAlterarClick}>ALTERAR</button>
+          <button type="button" name="btAlterar" id="btAlterar">ALTERAR</button>
         </div>
         <div className="botoes-direita">
           <button type="button" name="btLimpar" id="btLimpar" onClick={limparCampos}>LIMPAR</button>
           <button type="button" name="btConsultar" id="btConsultar">CONSULTAR</button>
         </div>
       </div>
+
+      {showPopup && (
+      <div className="popup-overlay">
+        <div className="popup-clientes">
+          <p>Por favor, preencha todos os campos obrigatórios.</p>
+          <button onClick={fecharPopup}>Fechar</button>
+        </div>
+      </div>
+    )}
+
     </div>
   );
 };
@@ -356,16 +201,11 @@ export const cpfMascara = (value) => {
     .replace(/(-\d{2})\d+?$/, "$1");
 };
 
-// MÁSCARA PARA CNPJ
-export const cnpjMascara = (value) => {
+// MÁSCARA PARA RG
+export const rgMascara = (value) => {
   const formattedValue = value.replace(/\D/g, "");
 
-  return formattedValue
-    .slice(0, 14)
-    .replace(/^(\d{2})(\d)/, "$1.$2")
-    .replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3")
-    .replace(/\.(\d{3})(\d)/, ".$1/$2")
-    .replace(/(\d{4})(\d)/, "$1-$2");
+  return formattedValue.slice(0, 10);
 };
 
 // MÁSCARA UF
