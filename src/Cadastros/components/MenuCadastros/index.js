@@ -25,8 +25,14 @@ const MenuCadastros = ({ telaSelecionada, handleButtonClick }) => {
       currentPath === "/cadastroCliente" ||
       currentPath === "/cadastroFornecedor" ||
       currentPath === "/cadastroOperacao";
+    const isNavigatingToDifferentTela = telaSelecionada !== tela;
 
-    if (isCadastroPath && telaSelecionada !== tela) {
+    if (isCadastroPath && isNavigatingToDifferentTela){
+      setPopupMessage("Tem certeza que deseja sair? Seu registro será apagado.");
+      setShowPopup(true);
+      setNextPath(path);
+      setNextTela(tela);
+    } else if (isCadastroPath) {
       setPopupMessage("Tem certeza que deseja sair? Seu registro será apagado.");
       setShowPopup(true);
       setNextPath(path);
@@ -34,7 +40,6 @@ const MenuCadastros = ({ telaSelecionada, handleButtonClick }) => {
     } else {
       handleButtonClick(tela);
       navigate(path);
-      console.log(`Botão ${tela} clicado!`);
     }
   };
 

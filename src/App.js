@@ -6,6 +6,7 @@ import Login from "./Login";
 import Home from "./Home";
 import CadastroClienteInicial from "./Cadastros/Cliente/ClienteInicial";
 import CadastroCliente from "./Cadastros/Cliente/CadastroCliente";
+import EditaCliente from "./Cadastros/Cliente/EditaCliente";
 import CadastroFornecedorInicial from "./Cadastros/Fornecedor/FornecedorInicial";
 import CadastroFornecedor from "./Cadastros/Fornecedor/CadastroFornecedor";
 import CadastroOperacaoInicial from "./Cadastros/Operacao/OperacaoInicial";
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/cadastro" element={<CadastroClienteInicial />} />
         <Route path="/cadastroCliente" element={<CadastroCliente />} />
+        <Route path="/editaCliente" element={<EditaCliente />} />
         <Route path="/cadastroFornecedorInicial" element={<CadastroFornecedorInicial />} />
         <Route path="/cadastroFornecedor" element={<CadastroFornecedor />} />
         <Route path="/cadastroOperacaoInicial" element={<CadastroOperacaoInicial />} />
