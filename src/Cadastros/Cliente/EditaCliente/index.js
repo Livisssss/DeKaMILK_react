@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Header from "../../../components/Header";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
-import "./cadastroCliente.css";
+import { useLocation } from "react-router-dom";
+import "./EditaCliente.css";
 import MenuCadastros from "../../components/MenuCadastros";
 
-const CadastroCliente = () => {
+const EditaCliente = () => {
   const location = useLocation();
   const { clienteData } = location.state || {};
 
@@ -32,6 +32,8 @@ const CadastroCliente = () => {
       setEndereco(clienteData.endereco);
       setCidade(clienteData.cidade);
       setEmail(clienteData.email);
+      const tipoPessoa = clienteData.cpf ? "Física" : clienteData.cnpj ? "Jurídica" : null;
+      setTipoPessoa(tipoPessoa);
     }
   }, [clienteData]);
 
@@ -336,4 +338,4 @@ export const telefoneMascara = (value) => {
   }
   return formattedValue.trim();
 };
-export default CadastroCliente;
+export default EditaCliente;

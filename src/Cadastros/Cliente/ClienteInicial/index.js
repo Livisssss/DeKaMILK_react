@@ -40,19 +40,15 @@ const ClienteInicial = () => {
         throw new Error("ID do cliente não fornecido.");
       }
   
-      // Aqui você pode fazer a solicitação GET para buscar os detalhes do cliente pelo ID
       const response = await fetch(`http://localhost:3000/api/v1/cliente/${clienteId}`);
       if (!response.ok) {
         throw new Error("Erro ao buscar detalhes do cliente.");
       }
       const clienteData = await response.json();
-
+  
       console.log("Detalhes do cliente retornado:", clienteData.nome);
-      
-      // Salvar os detalhes do cliente no estado para exibir nos campos do formulário de edição
-      setClienteEditData(clienteData);
-
-      navigate("/cadastroCliente");
+  
+      navigate("/editaCliente", { state: { clienteData } });
     } catch (error) {
       console.error("Erro ao buscar os detalhes do cliente:", error);
       // Trate o erro aqui, por exemplo, exibindo uma mensagem para o usuário
@@ -108,7 +104,7 @@ const ClienteInicial = () => {
           </tbody>
         </table>
       </div>
-      <div className="btAdicionar">
+      <div className="btNovo">
         <Link to="/cadastroCliente">
           <button>+</button>
         </Link>

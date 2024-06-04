@@ -71,14 +71,14 @@ tbody tr:last-child td:last-child {
 
 
 /* BOTÃO ADICIONAR CLIENTES */
-.btAdicionar {
+.btNovo {
   position: fixed;
   bottom: 50px;
   right: 50px;
   display: block;
 }
 
-.btAdicionar button {
+.btNovo button {
   font-size: 50px;
   width: 55px;
   height: 55px;
@@ -90,6 +90,6 @@ tbody tr:last-child td:last-child {
   transition: background-color 0.2s ease;
 }
 
-.btAdicionar button:hover {
+.btNovo button:hover {
   background-color: #1F3A66;
 }
