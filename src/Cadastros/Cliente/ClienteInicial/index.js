@@ -9,7 +9,6 @@ import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 const ClienteInicial = () => {
   const [telaCadastrosAberta, setTelaCadastrosAberta] = useState("CLIENTES");
   const [clientes, setClientes] = useState([]);
-  const [clienteEditData, setClienteEditData] = useState(null); // Estado para os dados do cliente a serem editados
   const navigate = useNavigate();
 
   const handleButtonClick = (tela) => {
@@ -24,7 +23,9 @@ const ClienteInicial = () => {
           throw new Error("Erro ao buscar os clientes do banco de dados.");
         }
         const clientesData = await response.json();
-        setClientes(clientesData);
+        // Ordena os clientes por ID em ordem crescente
+        const sortedClientes = clientesData.sort((a, b) => a.cliente_id - b.cliente_id);
+        setClientes(sortedClientes);
       } catch (error) {
         console.error("Erro ao buscar os clientes:", error);
         // Trate o erro aqui, por exemplo, exibindo uma mensagem para o usuário
@@ -34,29 +35,31 @@ const ClienteInicial = () => {
     fetchClientes();
   }, []);
 
-  const handleEditClick = async (clienteId, cliente) => {
+
+
+  const handleEditClick = async (clienteId) => {
     try {
       if (!clienteId) {
         throw new Error("ID do cliente não fornecido.");
       }
-  
+
       const response = await fetch(`http://localhost:3000/api/v1/cliente/${clienteId}`);
       if (!response.ok) {
         throw new Error("Erro ao buscar detalhes do cliente.");
       }
       const clienteData = await response.json();
-  
+
       console.log("Detalhes do cliente retornado:", clienteData.nome);
-  
-      navigate("/editaCliente", { state: { clienteData } });
+      console.log("ID:", clienteId);
+
+      // Navega para a página de edição incluindo o clienteData e o clienteId no estado
+      navigate("/editaCliente", { state: { clienteData, clienteId } });
     } catch (error) {
       console.error("Erro ao buscar os detalhes do cliente:", error);
       // Trate o erro aqui, por exemplo, exibindo uma mensagem para o usuário
     }
   };
-  
 
-  
   return (
     <div>
       <Header />

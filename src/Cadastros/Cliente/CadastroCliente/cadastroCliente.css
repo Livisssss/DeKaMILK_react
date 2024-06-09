@@ -126,11 +126,6 @@ button[name="btAdicionar"] {
     color: #F8F8EC;
 }
 
-button[name="btDeletar"] {
-    background-color: #C0392B;
-    color: #F8F8EC;
-}
-
 button[name="btLimpar"] {
     background-color: #6D8693;
     color: #F8F8EC;
@@ -141,52 +136,6 @@ button[name="btAdicionar"]:hover {
     background-color: #219653;
 }
 
-button[name="btDeletar"]:hover {
-    background-color: #A93226;
-}
-
 button[name="btLimpar"]:hover {
     background-color: #5C7686;
-}
-
-
-/* POP-UP AVISO*/
-.popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.popup-clientes {
-  background: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.popup-clientes button{
-  padding: 10px;
-  background-color: #e0e3e6;
-  width: 130px;
-  height: 40px;
-  border: none;
-  border-radius: 10px;
-  color: #383939;
-  font-family: Poppins;
-  font-size: 15px;
-  font-weight: 700;
-  text-transform: bold;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.popup-clientes button:hover{
-  background-color: #f2f2f2;
 }

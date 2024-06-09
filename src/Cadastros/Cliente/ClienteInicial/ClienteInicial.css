@@ -1,8 +1,8 @@
 .table-container {
   display: inline-block;
-  margin-left: 16%;
+  margin-left: 12%;
   margin-top: 3%;
-  height: 600px;
+  height: 500px;
   overflow-y: auto;
   overflow-x: auto;
   position: relative;
@@ -53,8 +53,6 @@ tbody tr:last-child td:last-child {
   border-bottom-right-radius: 10px;
 }
 
-
-/* BOTÃO EDIÇÃO CLIENTES - TABELA*/
 .editar-button {
   background-color: #8B322C;
   color: white;
@@ -69,8 +67,6 @@ tbody tr:last-child td:last-child {
   }
 }
 
-
-/* BOTÃO ADICIONAR CLIENTES */
 .btNovo {
   position: fixed;
   bottom: 50px;

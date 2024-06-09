@@ -3,43 +3,42 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./MenuCadastros.css";
 
 const MenuCadastros = ({ telaSelecionada, handleButtonClick }) => {
-  const [showPopup, setShowPopup] = useState(false);
-  const [popupMessage, setPopupMessage] = useState("");
   const [nextPath, setNextPath] = useState("");
   const [nextTela, setNextTela] = useState("");
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handlePopupConfirmation = (confirmed) => {
-    setShowPopup(false);
-    if (confirmed) {
-      handleButtonClick(nextTela);
-      navigate(nextPath);
-    }
-  };
-
   const handleNavigation = (path, tela) => {
     const currentPath = location.pathname;
     const isCadastroPath =
       currentPath === "/cadastroCliente" ||
+      currentPath === "/editaCliente" ||
       currentPath === "/cadastroFornecedor" ||
-      currentPath === "/cadastroOperacao";
+      currentPath === "/cadastroOperacao" ||
+      currentPath === "/editaFornecedor" ||
+      currentPath === "/cadastroFornecedorInicial";
     const isNavigatingToDifferentTela = telaSelecionada !== tela;
 
-    if (isCadastroPath && isNavigatingToDifferentTela){
-      setPopupMessage("Tem certeza que deseja sair? Seu registro será apagado.");
-      setShowPopup(true);
-      setNextPath(path);
-      setNextTela(tela);
+    if (isCadastroPath && isNavigatingToDifferentTela) {
+      const confirmation = window.confirm(
+        "Tem certeza que deseja sair? Seu registro será apagado."
+      );
+      if (confirmation) {
+        navigate(path);
+        handleButtonClick(tela);
+      }
     } else if (isCadastroPath) {
-      setPopupMessage("Tem certeza que deseja sair? Seu registro será apagado.");
-      setShowPopup(true);
-      setNextPath(path);
-      setNextTela(tela);
+      const confirmation = window.confirm(
+        "Tem certeza que deseja sair? Seu registro será apagado."
+      );
+      if (confirmation) {
+        navigate(path);
+        handleButtonClick(tela);
+      }
     } else {
-      handleButtonClick(tela);
       navigate(path);
+      handleButtonClick(tela);
     }
   };
 
@@ -65,16 +64,6 @@ const MenuCadastros = ({ telaSelecionada, handleButtonClick }) => {
       >
         OPERAÇÕES
       </button>
-
-      {showPopup && (
-        <div className="popup-overlay">
-          <div className="popup-navegation">
-            <p>{popupMessage}</p>
-            <button onClick={() => handlePopupConfirmation(true)}>SIM</button>
-            <button onClick={() => handlePopupConfirmation(false)}>NÃO</button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
