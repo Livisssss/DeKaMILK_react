@@ -28,7 +28,6 @@
 }
 
 
-
 /* RADIO BUTTONS */
 .radio-buttons {
     display: grid;
@@ -59,7 +58,6 @@
 }
 
 
-
 /* ESTILO CONTAINER CPNJ E INSCRIÇÃO ESTADUAL */
 .cpf-cnpj-container{
     text-align: left;
@@ -67,7 +65,6 @@
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 25px;
 }
-
 
 
 /* ESTILO CONTAINER LOCALIDADE */
@@ -84,7 +81,6 @@
 }
 
 
-
 /* ESTILO CONTAINER CONTATO */
 .contato-container {
     text-align: left;
@@ -92,7 +88,6 @@
     grid-template-columns: 330px 1fr;
     grid-column-gap: 25px;
 }
-
 
 
 /* BOTÕES CRUD*/

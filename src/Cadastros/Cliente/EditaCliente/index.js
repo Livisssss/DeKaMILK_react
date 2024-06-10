@@ -3,39 +3,42 @@ import Header from "../../../components/Header";
 import { useLocation } from "react-router-dom";
 import "./EditaCliente.css";
 import MenuCadastros from "../../components/MenuCadastros";
+import { useNavigate } from "react-router-dom";
 
 const EditaCliente = () => {
+  const navigate = useNavigate();
   const location = useLocation();
-  const { clienteData } = location.state || {};
+  const { clienteData, clienteId } = location.state || {};
 
+  const [id, setId] = useState("");
   const [telaCadastrosAberta, setTelaCadastrosAberta] = useState("CLIENTES");
-  const [nome, setNome] = useState(clienteData ? clienteData.nome : "");
-  const [cpf, setCpf] = useState(clienteData ? clienteData.cpf : "");
-  const [cnpj, setCnpj] = useState(clienteData ? clienteData.cnpj : "");
-  const [uf, setUf] = useState(clienteData ? clienteData.uf : "");
-  const [cep, setCep] = useState(clienteData ? clienteData.cep : "");
-  const [telefone, setTelefone] = useState(clienteData ? clienteData.telefone : "");
-  const [endereco, setEndereco] = useState(clienteData ? clienteData.endereco : "");
-  const [cidade, setCidade] = useState(clienteData ? clienteData.cidade : "");
-  const [email, setEmail] = useState(clienteData ? clienteData.email : "");
+  const [nome, setNome] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [cnpj, setCnpj] = useState("");
+  const [uf, setUf] = useState("");
+  const [cep, setCep] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [endereco, setEndereco] = useState("");
+  const [cidade, setCidade] = useState("");
+  const [email, setEmail] = useState("");
   const [tipoPessoa, setTipoPessoa] = useState(null);
-  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     if (clienteData) {
-      setNome(clienteData.nome);
-      setCpf(clienteData.cpf);
-      setCnpj(clienteData.cnpj);
-      setUf(clienteData.uf);
-      setCep(clienteData.cep);
-      setTelefone(clienteData.telefone);
-      setEndereco(clienteData.endereco);
-      setCidade(clienteData.cidade);
-      setEmail(clienteData.email);
-      const tipoPessoa = clienteData.cpf ? "Física" : clienteData.cnpj ? "Jurídica" : null;
+      setId(clienteId || "");
+      setNome(clienteData.nome || "");
+      setCpf(clienteData.cpf || "");
+      setCnpj(clienteData.cnpj || "");
+      setUf(clienteData.uf || "");
+      setCep(clienteData.cep || "");
+      setTelefone(clienteData.telefone || "");
+      setEndereco(clienteData.endereco || "");
+      setCidade(clienteData.cidade || "");
+      setEmail(clienteData.email || "");
+      const tipoPessoa = clienteData.cpf ? "fisica" : clienteData.cnpj ? "juridica" : null;
       setTipoPessoa(tipoPessoa);
     }
-  }, [clienteData]);
+  }, [clienteData, clienteId]);
 
   const handleButtonClick = (tela) => {
     setTelaCadastrosAberta(tela);
@@ -78,64 +81,38 @@ const EditaCliente = () => {
     } else if (tipoPessoa === "juridica") {
       return nome && telefone && email && cnpj && cnpj.length === 18;
     } else {
-      return false; // Se o tipo de pessoa for nulo, retorna falso
+      return false;
     }
   };
 
   const handleTipoPessoaChange = (newTipoPessoa) => {
     setTipoPessoa(newTipoPessoa);
     if (newTipoPessoa === "fisica") {
-      setCnpj(""); // Limpa o CNPJ ao selecionar Pessoa Física
+      setCnpj("");
     } else {
-      setCpf(""); // Limpa o CPF ao selecionar Pessoa Jurídica
+      setCpf("");
     }
   };
-   // FUNÇÃO PARA FECHAR POPUP
-   const fecharPopup = () => {
-    setTimeout(() => {
-      setShowPopup(false);
-    }, 300);
-  };
-   // FECHA O POP UP COM A TECLA ESC
-   useEffect(() => {
-    const handleKeyPress = (event) => {
-      if (event.keyCode === 27 && showPopup) {
-        fecharPopup();
-      }
-    };
-  });
 
-  const limparCampos = () => {
-    setNome("");
-    setCpf("");
-    setCnpj("");
-    setEndereco("");
-    setCidade("");
-    setUf("");
-    setCep("");
-    setTelefone("");
-    setEmail("");
-    setTipoPessoa("null");
-  };
 
+  // BOTÃO ALTERAR
   const incluirCliente = async () => {
-    // Verifica se todos os campos obrigatórios estão preenchidos
     if (!verificarCamposObrigatorios()) {
       alert("Por favor, preencha todos os campos obrigatórios.");
       return;
     }
 
-    // Verifica se os campos com máscara estão preenchidos corretamente
-    if (tipoPessoa === "fisica") {
-      if (!cpf || cpf.length !== 14) {
-        alert("Por favor, preencha o CPF corretamente.");
-        return;
-      }
-    } else if (tipoPessoa === "juridica") {
-      if (!cnpj || cnpj.length !== 18) {
-        alert("Por favor, preencha o CNPJ corretamente.");
-        return;
-      }
+    if (tipoPessoa !== "fisica" && tipoPessoa !== "juridica") {
+      alert("Por favor, selecione o tipo de pessoa.");
+      return;
+    }
+
+    if (tipoPessoa === "fisica" && (!cpf || cpf.length !== 14)) {
+      alert("Por favor, preencha o CPF corretamente.");
+      return;
+    } else if (tipoPessoa === "juridica" && (!cnpj || cnpj.length !== 18)) {
+      alert("Por favor, preencha o CNPJ corretamente.");
+      return;
     }
 
     if (!cep || cep.length !== 9) {
@@ -148,11 +125,9 @@ const EditaCliente = () => {
       return;
     }
 
-    // Agora envia os dados para o servidor
     const cliente = {
+      id: clienteId,
       nome,
-      cpf: tipoPessoa === "fisica" ? cpf : undefined, // Só envia CPF se for pessoa física
-      cnpj: tipoPessoa === "juridica" ? cnpj : undefined, // Só envia CNPJ se for pessoa jurídica
       endereco,
       cidade,
       uf,
@@ -161,11 +136,24 @@ const EditaCliente = () => {
       email,
     };
 
-    console.log("Enviando cliente:", cliente);
+    if (clienteData && tipoPessoa !== clienteData.tipoPessoa) {
+      delete clienteData.cpf;
+      delete clienteData.cnpj;
+    }
+
+    if (tipoPessoa === "fisica") {
+      cliente.cpf = cpf;
+      cliente.cnpj = null;
+    } else if (tipoPessoa === "juridica") {
+      cliente.cnpj = cnpj;
+      cliente.cpf = null;
+    }
+
+    console.log("Alterando cliente:", cliente);
 
     try {
-      const response = await fetch("http://localhost:3000/api/v1/cliente", {
-        method: "POST",
+      const response = await fetch(`http://localhost:3000/api/v1/cliente/${clienteId}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
@@ -175,25 +163,53 @@ const EditaCliente = () => {
       const result = await response.json();
 
       if (response.ok) {
-        limparCampos();
-      } else if (response.status === 422) {
-        console.error("Erro de validação:", result);
-        if (result.error === 'Já existe um cliente cadastrado com este CPF.') {
-          alert("Já existe um cliente cadastrado com este CPF.");
-          setCpf(""); // Limpa o campo CPF
-        } else if (result.error === 'Já existe um cliente cadastrado com este CNPJ.') {
-          alert("Já existe um cliente cadastrado com este CNPJ.");
-          setCnpj(""); // Limpa o campo CNPJ
-        } else {
-          alert("Erro ao incluir cliente. Verifique os dados e tente novamente.");
-        }
+        alert("Cliente alterado com sucesso!");
+
+        navigate("/cadastro");
       } else {
-        console.error("Erro inesperado:", result);
-        alert("Erro ao incluir cliente. Tente novamente.");
+        if (result.error) {
+          alert(result.error);
+        } else {
+          alert("Erro ao alterar cliente. Verifique os dados e tente novamente.");
+        }
+        console.error("Erro ao alterar cliente:", result);
       }
     } catch (error) {
-      console.error("Erro ao incluir cliente:", error);
-      alert("Erro ao incluir cliente. Tente novamente.");
+      console.error("Erro ao alterar cliente:", error);
+      alert("Erro ao alterar cliente. Tente novamente.");
+    }
+  };
+
+
+  // BOTÃO DELETAR
+  const deletarCliente = async () => {
+    if (!clienteId) {
+      alert("ID do cliente não encontrado.");
+      return;
+    }
+
+    if (!window.confirm("Tem certeza que deseja deletar este cliente?")) {
+      return;
+    }
+
+    try {
+      const response = await fetch(`http://localhost:3000/api/v1/cliente/${clienteId}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        navigate("/cadastro");
+      } else {
+        const result = await response.json();
+        if (result.error) {
+          alert(result.error);
+        } else {
+          alert("Erro ao deletar cliente. Tente novamente.");
+        }
+      }
+    } catch (error) {
+      console.error("Erro ao deletar cliente:", error);
+      alert("Erro ao deletar cliente. Tente novamente.");
     }
   };
 
@@ -258,26 +274,16 @@ const EditaCliente = () => {
       </div>
       <div className="botoes-crud">
         <div className="botoes-esquerda">
-          <button type="button" name="btIncluir" id="btIncluir" onClick={incluirCliente}>INCLUIR</button>
-          <button type="button" name="btDeletar" id="btDeletar">DELETAR</button>
+          <button type="button" name="btIncluir" id="btIncluir" onClick={incluirCliente}>ALTERAR</button>
         </div>
         <div className="botoes-direita">
-          <button type="button" name="btLimpar" id="btLimpar" onClick={limparCampos}>LIMPAR</button>
+          <button type="button" name="btDeletar" id="btDeletar" onClick={deletarCliente}>DELETAR</button>
         </div>
       </div>
-
-      {showPopup && (
-      <div className="popup-overlay">
-        <div className="popup-clientes">
-          <p>Por favor, preencha todos os campos obrigatórios.</p>
-          <button onClick={fecharPopup}>Fechar</button>
-        </div>
-      </div>
-    )}
-
     </div>
   );
 };
+
 // MÁSCARA PARA CPF
 export const cpfMascara = (value) => {
   return value
@@ -306,6 +312,7 @@ export const ufMascara = (value) => {
   value = value.toUpperCase();
   return value;
 };
+
 // MÁSCARA CEP
 export const cepMascara = (value) => {
   const formattedValue = value.replace(/\D/g, "");
@@ -313,6 +320,7 @@ export const cepMascara = (value) => {
     ? formattedValue.replace(/^(\d{5})(\d{1,3})$/, "$1-$2")
     : formattedValue;
 };
+
 // MÁSCARA TELEFONE
 export const telefoneMascara = (value) => {
   const digitsOnly = value.replace(/\D/g, "");
@@ -338,4 +346,5 @@ export const telefoneMascara = (value) => {
   }
   return formattedValue.trim();
 };
+
 export default EditaCliente;

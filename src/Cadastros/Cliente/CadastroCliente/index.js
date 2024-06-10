@@ -19,7 +19,6 @@ const CadastroCliente = () => {
   const [cidade, setCidade] = useState(clienteData ? clienteData.cidade : "");
   const [email, setEmail] = useState(clienteData ? clienteData.email : "");
   const [tipoPessoa, setTipoPessoa] = useState(null);
-  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     if (clienteData) {
@@ -58,10 +57,29 @@ const CadastroCliente = () => {
     setUf(value);
   };
 
-  const handleChangeCep = (event) => {
+  const handleChangeCep = async (event) => {
     let value = event.target.value;
     value = cepMascara(value);
     setCep(value);
+
+    if (value.length === 9) {
+      try {
+        const response = await fetch(`https://viacep.com.br/ws/${value}/json/`);
+        const data = await response.json();
+        if (data.erro) {
+          alert("CEP não encontrado. Por favor, verifique o CEP e tente novamente.");
+          return;
+        }
+        setUf(data.uf);
+        setCidade(data.localidade);
+        setEndereco(`${data.logradouro}, ${data.bairro}`);
+        if (data.logradouro === '') {
+          setEndereco('');
+        }
+      } catch (error) {
+        console.error("Erro ao buscar dados do CEP:", error);
+      }
+    }
   };
 
   const handleChangeTelefone = (event) => {
@@ -76,33 +94,21 @@ const CadastroCliente = () => {
     } else if (tipoPessoa === "juridica") {
       return nome && telefone && email && cnpj && cnpj.length === 18;
     } else {
-      return false; // Se o tipo de pessoa for nulo, retorna falso
+      return false;
     }
   };
 
   const handleTipoPessoaChange = (newTipoPessoa) => {
     setTipoPessoa(newTipoPessoa);
     if (newTipoPessoa === "fisica") {
-      setCnpj(""); // Limpa o CNPJ ao selecionar Pessoa Física
+      setCnpj("");
     } else {
-      setCpf(""); // Limpa o CPF ao selecionar Pessoa Jurídica
+      setCpf("");
     }
   };
-   // FUNÇÃO PARA FECHAR POPUP
-   const fecharPopup = () => {
-    setTimeout(() => {
-      setShowPopup(false);
-    }, 300);
-  };
-   // FECHA O POP UP COM A TECLA ESC
-   useEffect(() => {
-    const handleKeyPress = (event) => {
-      if (event.keyCode === 27 && showPopup) {
-        fecharPopup();
-      }
-    };
-  });
 
+
+  // BOTÃO LIMPAR
   const limparCampos = () => {
     setNome("");
     setCpf("");
@@ -116,14 +122,14 @@ const CadastroCliente = () => {
     setTipoPessoa("null");
   };
 
+
+  // BOTÃO INCLUIR CLIENTE
   const incluirCliente = async () => {
-    // Verifica se todos os campos obrigatórios estão preenchidos
     if (!verificarCamposObrigatorios()) {
       alert("Por favor, preencha todos os campos obrigatórios.");
       return;
     }
 
-    // Verifica se os campos com máscara estão preenchidos corretamente
     if (tipoPessoa === "fisica") {
       if (!cpf || cpf.length !== 14) {
         alert("Por favor, preencha o CPF corretamente.");
@@ -146,11 +152,10 @@ const CadastroCliente = () => {
       return;
     }
 
-    // Agora envia os dados para o servidor
     const cliente = {
       nome,
-      cpf: tipoPessoa === "fisica" ? cpf : undefined, // Só envia CPF se for pessoa física
-      cnpj: tipoPessoa === "juridica" ? cnpj : undefined, // Só envia CNPJ se for pessoa jurídica
+      cpf: tipoPessoa === "fisica" ? cpf : undefined,
+      cnpj: tipoPessoa === "juridica" ? cnpj : undefined,
       endereco,
       cidade,
       uf,
@@ -178,10 +183,10 @@ const CadastroCliente = () => {
         console.error("Erro de validação:", result);
         if (result.error === 'Já existe um cliente cadastrado com este CPF.') {
           alert("Já existe um cliente cadastrado com este CPF.");
-          setCpf(""); // Limpa o campo CPF
+          setCpf("");
         } else if (result.error === 'Já existe um cliente cadastrado com este CNPJ.') {
           alert("Já existe um cliente cadastrado com este CNPJ.");
-          setCnpj(""); // Limpa o campo CNPJ
+          setCnpj("");
         } else {
           alert("Erro ao incluir cliente. Verifique os dados e tente novamente.");
         }
@@ -257,25 +262,15 @@ const CadastroCliente = () => {
       <div className="botoes-crud">
         <div className="botoes-esquerda">
           <button type="button" name="btIncluir" id="btIncluir" onClick={incluirCliente}>INCLUIR</button>
-          <button type="button" name="btDeletar" id="btDeletar">DELETAR</button>
         </div>
         <div className="botoes-direita">
           <button type="button" name="btLimpar" id="btLimpar" onClick={limparCampos}>LIMPAR</button>
         </div>
       </div>
-
-      {showPopup && (
-      <div className="popup-overlay">
-        <div className="popup-clientes">
-          <p>Por favor, preencha todos os campos obrigatórios.</p>
-          <button onClick={fecharPopup}>Fechar</button>
-        </div>
-      </div>
-    )}
-
     </div>
   );
 };
+
 // MÁSCARA PARA CPF
 export const cpfMascara = (value) => {
   return value
@@ -311,6 +306,7 @@ export const cepMascara = (value) => {
     ? formattedValue.replace(/^(\d{5})(\d{1,3})$/, "$1-$2")
     : formattedValue;
 };
+
 // MÁSCARA TELEFONE
 export const telefoneMascara = (value) => {
   const digitsOnly = value.replace(/\D/g, "");
@@ -336,4 +332,5 @@ export const telefoneMascara = (value) => {
   }
   return formattedValue.trim();
 };
+
 export default CadastroCliente;

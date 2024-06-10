@@ -14,6 +14,7 @@ import CadastroOperacao from "./Cadastros/Operacao/CadastroOperacao";
 import Financeiro from "./Financeiro/Pagar/LançamentoPagar";
 import FinanceiroReceber from "./Financeiro/Receber/LançamentoReceber";
 import Seguranca from "./Segurança"
+import EditaFornecedor from "./Cadastros/Fornecedor/EditaFornecedor";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/editaCliente" element={<EditaCliente />} />
         <Route path="/cadastroFornecedorInicial" element={<CadastroFornecedorInicial />} />
         <Route path="/cadastroFornecedor" element={<CadastroFornecedor />} />
+        <Route path="/editaFornecedor" element={<EditaFornecedor />} />
         <Route path="/cadastroOperacaoInicial" element={<CadastroOperacaoInicial />} />
         <Route path="/cadastroOperacao" element={<CadastroOperacao />} />
         <Route path="/financeiro" element={<Financeiro />} />

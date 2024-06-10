@@ -1,0 +1,17 @@
+button[name="btAlterar"] {
+    background-color: #27AE60;
+    color: #F8F8EC;
+}
+
+button[name="btLimpar"] {
+    background-color: #6D8693;
+    color: #F8F8EC;
+}
+
+button[name="btAdicionar"]:hover {
+    background-color: #219653;
+}
+
+button[name="btLimpar"]:hover {
+    background-color: #5C7686;
+}
