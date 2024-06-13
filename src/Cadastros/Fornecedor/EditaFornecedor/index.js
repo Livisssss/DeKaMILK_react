@@ -93,7 +93,6 @@ const EditaFornecedor = () => {
         }
     };
 
-
     // BOTÃO ALTERAR
     const alterarFornecedor = async () => {
         if (!verificarCamposObrigatorios()) {
@@ -211,7 +210,6 @@ const EditaFornecedor = () => {
             alert("Erro ao deletar fornecedor. Tente novamente.");
         }
     };
-
 
     return (
         <div>

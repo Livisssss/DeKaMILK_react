@@ -15,6 +15,7 @@ import Financeiro from "./Financeiro/Pagar/LançamentoPagar";
 import FinanceiroReceber from "./Financeiro/Receber/LançamentoReceber";
 import Seguranca from "./Segurança"
 import EditaFornecedor from "./Cadastros/Fornecedor/EditaFornecedor";
+import EditaOperacao from "./Cadastros/Operacao/editaOperacao";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="/editaFornecedor" element={<EditaFornecedor />} />
         <Route path="/cadastroOperacaoInicial" element={<CadastroOperacaoInicial />} />
         <Route path="/cadastroOperacao" element={<CadastroOperacao />} />
+        <Route path="/editaOperacao" element={<EditaOperacao />} />
         <Route path="/financeiro" element={<Financeiro />} />
         <Route path="/financeiroReceber" element={<FinanceiroReceber />} />
         <Route path="seguranca" element={<Seguranca />} />

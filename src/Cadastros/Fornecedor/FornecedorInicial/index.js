@@ -62,7 +62,7 @@ const FornecedorInicial = () => {
         telaSelecionada={telaCadastrosAberta}
         handleButtonClick={handleButtonClick}
       />
-      <div className="table-container">
+      <div className="table-fornecedor-container">
         <table>
           <thead>
             <tr>
