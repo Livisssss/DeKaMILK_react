@@ -1,65 +1,94 @@
-/* TABELA */
+.table-operacao-container {
+  display: inline-block;
+  margin-left: 35%;
+  margin-top: 3%;
+  height: 550px;
+  overflow-y: auto;
+  overflow-x: auto;
+  position: relative;
+  border-radius: 15px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  justify-content: center;
+}
+
+.table-operacao-container::-webkit-scrollbar {
+    display: none; 
+}
+  
 table {
-  width: 80%;
+  width: 100%;
   border-collapse: collapse;
+  display: contents;
+  align-items: center;
   margin-left: auto;
   margin-right: auto;
   margin-top: 60px;
 }
 
-/* Cabeçalho */
 thead th {
+  background-color: #f2f2f2;
+  position: sticky;
+  top: 0;
+  z-index: 1;
   background-color: #f2f2f2;
   padding: 8px;
   text-align: left;
   text-align: center;
 }
 
-/* Corpo */
 tbody td {
   padding: 8px;
   text-align: center;
 }
 
-/* Cor linhas pares */
-tbody tr:nth-child(even) {
-  background-color: #e8e8e8;
+
+thead th:first-child {
+  border-top-left-radius: 10px;
 }
 
-/* Cor linhas ímpares */
-tbody tr:nth-child(odd) {
-  background-color: #d2d5d8;
+thead th:last-child {
+  border-top-right-radius: 10px;
 }
 
-/* Estilos para linhas alternadas */
 tbody tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
-/* Estilos para os botões de edição 
-  .edit-button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 4px;
-    cursor: pointer;
+tbody tr:nth-child(odd) {
+  background-color: #d2d5d8;
+}
+
+tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+  
+.editar-button {
+  background-color: #8B322C;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #820300;
   }
-    
+}
   
-  
-    
-  /* BOTÃO ADICIONAR CLIENTES */
-.btAdicionar {
+.btNovo {
   position: fixed;
   bottom: 50px;
   right: 50px;
+  display: block;
 }
 
-.btAdicionar button {
+.btNovo button {
   font-size: 50px;
   width: 55px;
   height: 55px;
@@ -71,6 +100,23 @@ tbody tr:nth-child(even) {
   transition: background-color 0.2s ease;
 }
 
-.btAdicionar button:hover {
-  background-color: #457cce;
+.btNovo button:hover {
+  background-color: #1F3A66;
+}
+  
+
+#id-col {
+  width: 10%;
+}
+
+#descricao-col {
+  width: 49%;
+}
+
+#tipo-col {
+  width: 30%;
+}
+
+#editar-col {
+  width: 20%;
 }

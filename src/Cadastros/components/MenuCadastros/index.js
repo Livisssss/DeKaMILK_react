@@ -16,7 +16,8 @@ const MenuCadastros = ({ telaSelecionada, handleButtonClick }) => {
       currentPath === "/editaCliente" ||
       currentPath === "/cadastroFornecedor" ||
       currentPath === "/editaFornecedor" ||
-      currentPath === "/cadastroOperacao";
+      currentPath === "/cadastroOperacao" ||
+      currentPath === "/editaOperacao";
 
     const isNavigatingToDifferentTela = telaSelecionada !== tela;
 

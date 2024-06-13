@@ -1,25 +1,29 @@
-.table-container {
+.table-cliente-container {
   display: inline-block;
   margin-left: 12%;
   margin-top: 3%;
-  height: 500px;
+  height: 550px;
   overflow-y: auto;
   overflow-x: auto;
   position: relative;
   border-radius: 15px;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  justify-content: center;
 }
 
-.table-container::-webkit-scrollbar {
+.table-cliente-container::-webkit-scrollbar {
     display: none; 
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  display:contents;
+  display: contents;
   align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
 }
 
 thead th {
@@ -27,7 +31,17 @@ thead th {
   position: sticky;
   top: 0;
   z-index: 1;
+  background-color: #f2f2f2;
+  padding: 8px;
+  text-align: left;
+  text-align: center;
 }
+
+tbody td {
+  padding: 8px;
+  text-align: center;
+}
+
 
 thead th:first-child {
   border-top-left-radius: 10px;

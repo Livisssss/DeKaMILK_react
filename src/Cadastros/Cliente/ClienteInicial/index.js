@@ -23,12 +23,10 @@ const ClienteInicial = () => {
           throw new Error("Erro ao buscar os clientes do banco de dados.");
         }
         const clientesData = await response.json();
-        // Ordena os clientes por ID em ordem crescente
         const sortedClientes = clientesData.sort((a, b) => a.cliente_id - b.cliente_id);
         setClientes(sortedClientes);
       } catch (error) {
         console.error("Erro ao buscar os clientes:", error);
-        // Trate o erro aqui, por exemplo, exibindo uma mensagem para o usuário
       }
     };
 
@@ -52,11 +50,9 @@ const ClienteInicial = () => {
       console.log("Detalhes do cliente retornado:", clienteData.nome);
       console.log("ID:", clienteId);
 
-      // Navega para a página de edição incluindo o clienteData e o clienteId no estado
       navigate("/editaCliente", { state: { clienteData, clienteId } });
     } catch (error) {
       console.error("Erro ao buscar os detalhes do cliente:", error);
-      // Trate o erro aqui, por exemplo, exibindo uma mensagem para o usuário
     }
   };
 
@@ -67,7 +63,7 @@ const ClienteInicial = () => {
         telaSelecionada={telaCadastrosAberta}
         handleButtonClick={handleButtonClick}
       />
-      <div className="table-container">
+      <div className="table-cliente-container">
         <table>
           <thead>
             <tr>

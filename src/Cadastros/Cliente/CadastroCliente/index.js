@@ -178,6 +178,7 @@ const CadastroCliente = () => {
       const result = await response.json();
 
       if (response.ok) {
+        alert("Cliente incluido com sucesso!");
         limparCampos();
       } else if (response.status === 422) {
         console.error("Erro de validação:", result);

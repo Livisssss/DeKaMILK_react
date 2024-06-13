@@ -112,7 +112,7 @@ const CadastroFornecedor = () => {
     }
   };
 
-  // BOTÃO FORNECEDOR
+  // BOTÃO LIMPAR
   const limparCampos = () => {
     setNome("");
     setCpf("");
@@ -127,7 +127,7 @@ const CadastroFornecedor = () => {
   };
 
 
-  // BOTÃO INCLUIR FORNECEDOR
+  // BOTÃO INCLUIR
   const incluirFornecedor = async () => {
     if (!verificarCamposObrigatorios()) {
       alert("Por favor, preencha todos os campos obrigatórios.");
@@ -182,7 +182,7 @@ const CadastroFornecedor = () => {
       const result = await response.json();
 
       if (response.ok) {
-        navigate("/cadastroFornecedorInicial");
+        alert("Fornecedor incluido com sucesso!");
         limparCampos();
       } else if (response.status === 422) {
         console.error("Erro de validação:", result);
