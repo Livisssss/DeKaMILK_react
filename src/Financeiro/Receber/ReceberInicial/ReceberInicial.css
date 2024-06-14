@@ -1,0 +1,122 @@
+.table-receber-container {
+    display: inline-block;
+    margin-left: 35%;
+    margin-top: 3%;
+    height: 550px;
+    overflow-y: auto;
+    overflow-x: auto;
+    position: relative;
+    border-radius: 15px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    justify-content: center;
+}
+  
+.table-receber-container::-webkit-scrollbar {
+    display: none; 
+}
+    
+table {
+    width: 100%;
+    border-collapse: collapse;
+    display: contents;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+}
+  
+thead th {
+    background-color: #f2f2f2;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #f2f2f2;
+    padding: 8px;
+    text-align: left;
+    text-align: center;
+    }
+  
+tbody td {
+    padding: 8px;
+    text-align: center;
+}
+  
+  
+thead th:first-child {
+    border-top-left-radius: 10px;
+}
+  
+thead th:last-child {
+    border-top-right-radius: 10px;
+}
+  
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+  
+tbody tr:nth-child(odd) {
+    background-color: #d2d5d8;
+}
+  
+tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+  
+tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+    
+.editar-button {
+    background-color: #8B322C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  
+    &:hover {
+      background-color: #820300;
+    }
+}
+    
+.btNovo {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    display: block;
+}
+  
+.btNovo button {
+    font-size: 50px;
+    width: 55px;
+    height: 55px;
+    border: none;
+    background-color: #2b4c7e;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+  
+.btNovo button:hover {
+    background-color: #1F3A66;
+}
+    
+  
+#id-col {
+    width: 10%;
+}
+  
+#descricao-col {
+    width: 49%;
+}
+  
+#tipo-col {
+    width: 30%;
+}
+  
+#editar-col {
+    width: 20%;
+}

@@ -7,15 +7,25 @@ import Home from "./Home";
 import CadastroClienteInicial from "./Cadastros/Cliente/ClienteInicial";
 import CadastroCliente from "./Cadastros/Cliente/CadastroCliente";
 import EditaCliente from "./Cadastros/Cliente/EditaCliente";
+
 import CadastroFornecedorInicial from "./Cadastros/Fornecedor/FornecedorInicial";
 import CadastroFornecedor from "./Cadastros/Fornecedor/CadastroFornecedor";
+import EditaFornecedor from "./Cadastros/Fornecedor/EditaFornecedor";
+
 import CadastroOperacaoInicial from "./Cadastros/Operacao/OperacaoInicial";
 import CadastroOperacao from "./Cadastros/Operacao/CadastroOperacao";
-import Financeiro from "./Financeiro/Pagar/LançamentoPagar";
-import FinanceiroReceber from "./Financeiro/Receber/LançamentoReceber";
-import Seguranca from "./Segurança"
-import EditaFornecedor from "./Cadastros/Fornecedor/EditaFornecedor";
 import EditaOperacao from "./Cadastros/Operacao/editaOperacao";
+
+import CadastroPagar from "./Financeiro/Pagar/CadastroPagar";
+import EditaPagar from "./Financeiro/Pagar/EditaPagar";
+import PagarInicial from "./Financeiro/Pagar/PagarInicial";
+
+import CadastroReceber from "./Financeiro/Receber/CadastroReceber";
+import EditaReceber from "./Financeiro/Receber/EditaReceber";
+import ReceberInicial from "./Financeiro/Receber/ReceberInicial";
+
+
+import Seguranca from "./Segurança";
 
 const App = () => {
   return (
@@ -33,9 +43,13 @@ const App = () => {
         <Route path="/cadastroOperacaoInicial" element={<CadastroOperacaoInicial />} />
         <Route path="/cadastroOperacao" element={<CadastroOperacao />} />
         <Route path="/editaOperacao" element={<EditaOperacao />} />
-        <Route path="/financeiro" element={<Financeiro />} />
-        <Route path="/financeiroReceber" element={<FinanceiroReceber />} />
-        <Route path="seguranca" element={<Seguranca />} />
+        <Route path="/cadastroPagar" element={<CadastroPagar />} />
+        <Route path="/editaPagar" element={<EditaPagar />} />
+        <Route path="/financeiro" element={<PagarInicial />} />
+        <Route path="/cadastroReceber" element={<CadastroReceber />} />
+        <Route path="/editaReceber" element={<EditaReceber />} />
+        <Route path="/receberInicial" element={<ReceberInicial />} />
+        <Route path="/seguranca" element={<Seguranca />} />
       </Routes>
     </Router>
   );

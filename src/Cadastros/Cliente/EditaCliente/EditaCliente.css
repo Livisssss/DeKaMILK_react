@@ -7,3 +7,12 @@ button[name="btAdicionar"]:hover {
     background-color: #219653;
 }
 
+button[name="btDeletar"] {
+    background-color: #c0392b;
+    color: #f8f8ec;
+  }
+
+  button[name="btDeletar"]:hover {
+    background-color: #a93226;
+  }
+
