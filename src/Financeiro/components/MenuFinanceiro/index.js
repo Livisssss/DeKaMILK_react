@@ -13,7 +13,7 @@ const MenuFinanceiro = ({ telaSelecionada, handleButtonClick }) => {
           PAGAR
         </button>
       </Link>
-      <Link to="/financeiroReceber">
+      <Link to="/receberInicial">
         <button
           className={telaSelecionada === "RECEBER" ? "selecionado" : ""}
           onClick={() => handleButtonClick("RECEBER")}
